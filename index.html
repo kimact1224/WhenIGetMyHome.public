@@ -261,7 +261,7 @@
     .hero-value{font-size:22px;}
   }
   @media(max-width:480px){
-    .header-actions .btn span{display:none;}
+    .header-actions .btn span.btn-hide-mobile{display:none;}
   }
   /* 단계별 입력 마법사 */
   .wizard-overlay{position:fixed;inset:0;background:rgba(15,23,42,0.55);backdrop-filter:blur(2px);z-index:1000;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;}
@@ -316,10 +316,11 @@
       <option value="1000000" data-i18n="uopt1000000">백만원 (백만)</option>
       <option value="100000000" data-i18n="uopt100000000">억원 (억)</option>
     </select>
-    <button class="btn btn-ghost" onclick="openQuick()">⚡ <span data-i18n="quickRestart">빠른 입력</span></button>
-    <button class="btn btn-ghost" onclick="exportExcel()">📊 <span data-i18n="excel">엑셀 다운로드</span></button>
-    <button class="btn btn-ghost" onclick="showQA()">💬 <span data-i18n="qa">Q&amp;A</span></button>
-
+    <button class="btn btn-ghost" onclick="saveData()">💾 <span class="btn-hide-mobile" data-i18n="save">저장</span></button>
+    <button class="btn btn-ghost" onclick="loadData()">📂 <span class="btn-hide-mobile" data-i18n="load">불러오기</span></button>
+    <button class="btn btn-ghost" onclick="openQuick()">⚡ <span class="btn-hide-mobile" data-i18n="quickRestart">빠른 입력</span></button>
+    <button class="btn btn-ghost" onclick="exportExcel()">📊 <span class="btn-hide-mobile" data-i18n="excel">엑셀 다운로드</span></button>
+    <button class="btn btn-ghost" onclick="showQA()">💬 <span class="btn-hide-mobile" data-i18n="qa">Q&amp;A</span></button>
   </div>
 </header>
 
@@ -550,6 +551,9 @@
 
       <!-- 부채 탭 패널 -->
       <div id="panelDebt" style="display:none;">
+        <div style="font-size:11px;color:#9a6b00;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:6px 10px;margin-bottom:8px;">
+          💡 <b>LTV 선순위 담보</b>로 체크한 부채는 대출 가능액 계산 시 자동 차감됩니다. (우측 결과 패널 대출 한도 연동)
+        </div>
         <div id="debtList"></div>
         <button class="add-btn" id="addDebtBtn" onclick="addAssetItem({type:'debt'})">+ 부채 항목 추가</button>
       </div>
@@ -602,9 +606,20 @@
 
     <!-- ① 핵심 결과 배너 + 요약 카드 (최상단) -->
     <div class="hero-result" id="heroResult">
-      <div class="hero-label" data-i18n="heroLabel">🏠 주택 구입 가능 시점</div>
-      <div class="hero-value" id="hero-when">—</div>
-      <div class="hero-sub" id="hero-sub">—</div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+        <div style="flex:1;min-width:0;">
+          <div class="hero-label" data-i18n="heroLabel">🏠 주택 구입 가능 시점</div>
+          <div class="hero-value" id="hero-when">—</div>
+          <div class="hero-sub" id="hero-sub">—</div>
+        </div>
+        <button id="shareBtn" onclick="shareResult()" title="이 결과 공유하기"
+          style="flex-shrink:0;margin-top:2px;padding:6px 11px;border:1.5px solid rgba(255,255,255,0.35);border-radius:7px;background:rgba(255,255,255,0.12);color:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap;display:none;">
+          🔗 공유
+        </button>
+      </div>
+      <div id="heroNotice" style="font-size:11px;opacity:0.85;margin-top:6px;display:none;background:rgba(255,255,255,0.15);border-radius:5px;padding:5px 9px;">
+        ⬇ 아래에서 내 정보를 입력하면 결과가 업데이트돼요
+      </div>
     </div>
 
     <!-- ② 순자산 vs 필요 자기자본 차트 -->
@@ -619,6 +634,12 @@
       <div class="chart-title" data-i18n="chartCostTitle">시점별 집값 · 취득세 · 기타비용 · 대출가능액</div>
       <div><canvas id="homeCostChart" height="210"></canvas></div>
       <div class="chart-axis-note" data-i18n="chartCostNote">실선=좌축(집값·대출가능액), 점선=좌축 보조(LTV·DSR 한도), 가는 선=우축(취득세·기타비용). DSR은 집값이 아닌 소득·기존부채에 연동되어 다르게 움직일 수 있습니다.</div>
+    </div>
+
+    <!-- 표 토글 버튼 -->
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn-icon" id="toggleHomeTableBtn" onclick="toggleTable('homeTableCard','toggleHomeTableBtn','📋 기간별 필요 금액 표 보기','📋 기간별 필요 금액 표 닫기')" style="font-size:12px;padding:5px 12px;cursor:pointer;">📋 기간별 필요 금액 표 보기</button>
+      <button class="btn-icon" id="toggleDetailTableBtn" onclick="toggleTable('detailTableCard','toggleDetailTableBtn','📋 현금흐름 상세 표 보기','📋 현금흐름 상세 표 닫기')" style="font-size:12px;padding:5px 12px;cursor:pointer;">📋 현금흐름 상세 표 보기</button>
     </div>
 
 
@@ -2030,8 +2051,10 @@ function periodLabelFromYears(yrs){
 function updateSummary(rows){
   if(!rows.length)return;
   const hero=document.getElementById('heroResult'), hw=document.getElementById('hero-when'), hs=document.getElementById('hero-sub');
+  const shareBtn=document.getElementById('shareBtn');
   if(!home.enabled){
     if(hero)hero.style.display='none';
+    if(shareBtn)shareBtn.style.display='none';
   } else {
     if(hero)hero.style.display='';
     const h=computeHome(rows);
@@ -2040,10 +2063,12 @@ function updateSummary(rows){
       if(hero)hero.className='hero-result reach';
       if(hw)hw.textContent=t('heroReach',{p:periodLabel(o.year)});
       if(hs)hs.textContent='구매 시점 집값 '+fmt(o.price)+'  ·  필요 자기자본 '+fmt(o.needEquity);
+      if(shareBtn)shareBtn.style.display='';
     } else {
       if(hero)hero.className='hero-result never';
       if(hw)hw.textContent=t('heroNever');
       if(hs)hs.textContent=t('heroNeverSub');
+      if(shareBtn)shareBtn.style.display='none';
     }
   }
 }
@@ -3194,7 +3219,7 @@ function syncQuickInputs(){
   const tag=getUnitLabel(), u=getUnit();
   ['qPriceUnit'].forEach(id=>{ const el=document.getElementById(id); if(el)el.textContent=tag; });
   // ① 예상 집값 가정
-  const pe=document.getElementById('qPrice'); if(pe)pe.value=nonNeg(home.price)?nonNeg(home.price)/u:'';
+  const pe=document.getElementById('qPrice'); if(pe){ pe.value=nonNeg(home.price)?nonNeg(home.price)/u:''; pe.placeholder=Math.round(500000000/u).toLocaleString(); }
   const gEl=document.getElementById('qGrowth'); if(gEl)gEl.value=safeNum(home.growthRate,2.5);
   const ftEl=document.getElementById('qFirstTime'); if(ftEl)ftEl.checked=!!home.firstTime;
   // ② 자산·부채 (현재 항목들에서 채움)
@@ -3236,6 +3261,97 @@ function quickPrev(){ quickGoStep(quickStep-1); }
 function openQuick(){ syncQuickInputs(); quickGoStep(1); document.getElementById('quickOverlay').style.display='flex'; }
 function closeQuick(){ markOnboarded(); document.getElementById('quickOverlay').style.display='none'; }
 function quickSkip(){ closeQuick(); update(); }   // 직접 모두 입력(전체화면)
+
+// 표 보기/닫기 토글
+function toggleTable(tableId, btnId, openLabel, closeLabel){
+  const el=document.getElementById(tableId);
+  const btn=document.getElementById(btnId);
+  if(!el||!btn)return;
+  const isHidden=el.style.display==='none'||el.style.display==='';
+  el.style.display=isHidden?'block':'none';
+  btn.textContent=isHidden?closeLabel:openLabel;
+}
+
+// ════════════════════════ URL 공유 ════════════════════════
+// 현재 상태를 Base64로 압축 → URL ?s= 파라미터에 담아 클립보드 복사
+function shareResult(){
+  try{
+    const state=getState();
+    // URL이 너무 길어지지 않도록 결과 표시에 필요한 핵심 필드만 포함
+    const payload={
+      unit:state.unit,
+      home:state.home,
+      assets:state.assets,
+      income:state.income,
+      expense:state.expense,
+      realloc:state.realloc
+    };
+    const json=JSON.stringify(payload);
+    const b64=btoa(unescape(encodeURIComponent(json)));
+    const url=location.origin+location.pathname+'?s='+b64;
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(()=>{
+        showShareToast(url);
+      }).catch(()=>{ fallbackCopyShare(url); });
+    } else {
+      fallbackCopyShare(url);
+    }
+  }catch(e){ showMsg('공유 URL 생성 실패: 데이터가 너무 큽니다'); }
+}
+function fallbackCopyShare(url){
+  const ta=document.createElement('textarea');
+  ta.value=url; ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); showShareToast(url); }
+  catch(e){ showMsg('URL 복사 실패 — 직접 복사해주세요'); }
+  document.body.removeChild(ta);
+}
+function showShareToast(url){
+  // 기존 토스트 제거
+  const old=document.getElementById('shareToast'); if(old)old.remove();
+  const el=document.createElement('div');
+  el.id='shareToast';
+  // URL이 길면 줄여서 표시
+  const displayUrl = url.length>60 ? url.slice(0,57)+'…' : url;
+  el.innerHTML=`
+    <div style="font-size:13px;font-weight:600;margin-bottom:6px;">🔗 공유 링크가 복사됐어요!</div>
+    <div style="font-size:11px;opacity:0.75;word-break:break-all;max-width:280px;line-height:1.4;">${displayUrl}</div>
+    <div style="font-size:11px;opacity:0.65;margin-top:5px;">카카오톡·네이버 카페 등에 붙여넣기 하세요</div>
+  `;
+  Object.assign(el.style,{
+    position:'fixed',bottom:'28px',left:'50%',transform:'translateX(-50%)',
+    background:'#0f172a',color:'#fff',padding:'14px 18px',borderRadius:'10px',
+    fontSize:'13px',zIndex:'9999',boxShadow:'0 6px 20px rgba(0,0,0,0.25)',
+    transition:'opacity .3s',opacity:'1',cursor:'pointer',minWidth:'240px'
+  });
+  el.onclick=()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),300); };
+  document.body.appendChild(el);
+  setTimeout(()=>{ if(el.parentNode){ el.style.opacity='0'; setTimeout(()=>el.remove(),300); } },5000);
+}
+
+// 페이지 로드 시 ?s= 파라미터가 있으면 상태 자동 복원
+function tryLoadFromUrl(){
+  try{
+    const params=new URLSearchParams(location.search);
+    const b64=params.get('s');
+    if(!b64) return false;
+    const json=decodeURIComponent(escape(atob(b64)));
+    const parsed=JSON.parse(json);
+    if(!parsed || typeof parsed!=='object') return false;
+    // 기본 구조 보정 후 applyState로 복원
+    ['assets','income','expense','realloc'].forEach(k=>{ if(!Array.isArray(parsed[k])) parsed[k]=[]; });
+    applyState(parsed);
+    markOnboarded();
+    // URL에서 파라미터 제거(뒤로가기 시 재로드 방지) — history.replaceState
+    const cleanUrl=location.origin+location.pathname;
+    if(history.replaceState) history.replaceState(null,'',cleanUrl);
+    // 공유 링크로 방문했음을 배너로 알림
+    setTimeout(()=>{
+      showMsg('🔗 공유된 시뮬레이션 결과를 불러왔어요');
+    }, 400);
+    return true;
+  }catch(e){ return false; }
+}
 
 // 빠른 입력값(다중 항목)을 상태에 주입하고 계산
 function quickCalc(){
@@ -3287,6 +3403,7 @@ function quickCalc(){
   if(newExp.length) expenseItems=newExp.slice(0,MAX_ITEMS);
   syncHomeInputs(); syncReallocAssets(); renderAssets(); renderItems&&renderItems(); renderRealloc&&renderRealloc(); markOnboarded();
   document.getElementById('quickOverlay').style.display='none';
+  const notice=document.getElementById('heroNotice'); if(notice)notice.style.display='none';
   update();
   scrollToResultMobile();
 }
@@ -3311,8 +3428,15 @@ reorderResults();
 //  - localStorage가 동작하고(프리뷰·샌드박스 등 차단 환경이 아니고)
 //  - 아직 온보딩하지 않은 첫 방문일 때만.
 // 저장이 막힌 환경에서는 팝업을 건너뛰고 기본값으로 바로 결과를 보여준다(검은 화면 방지).
+// URL ?s= 파라미터가 있으면 팝업 없이 공유 상태를 복원.
 try{
-  if(storageAvailable() && !isOnboarded()){ openQuick(); }
+  const loadedFromUrl = tryLoadFromUrl();
+  if(!loadedFromUrl){
+    if(storageAvailable() && !isOnboarded()){
+      openQuick();
+      const notice=document.getElementById('heroNotice'); if(notice)notice.style.display='block';
+    }
+  }
 }catch(e){ /* 어떤 이유로든 실패하면 팝업 없이 결과 화면 유지 */ }
 </script>
 </body>
