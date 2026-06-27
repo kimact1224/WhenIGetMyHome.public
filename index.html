@@ -50,12 +50,9 @@
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:var(--font);background:var(--page-bg);color:var(--gray-900);font-size:14px;line-height:1.6;min-height:100vh;}
 
-  .header{background:var(--gray-900);color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:flex-start;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px 10px;}
+  .header{background:var(--gray-900);color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px 10px;}
   .header-title{font-size:15px;font-weight:600;letter-spacing:-0.02em;white-space:nowrap;flex-shrink:0;}
-  .header-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-start;align-items:center;flex:1 1 auto;min-width:0;}
-  .seg-lang{background:rgba(255,255,255,0.12);padding:2px;gap:2px;flex-shrink:0;}
-  .seg-lang .seg-btn{padding:5px 9px;font-size:12px;color:rgba(255,255,255,0.65);white-space:nowrap;flex:0 0 auto;}
-  .seg-lang .seg-btn.active{background:#fff;color:var(--gray-900);box-shadow:none;}
+  .header-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;align-items:center;margin-left:auto;}
   .btn{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all .15s;white-space:nowrap;}
   .btn-ghost{background:rgba(255,255,255,0.1);color:#fff;}
   .btn-ghost:hover{background:rgba(255,255,255,0.18);}
@@ -106,6 +103,7 @@
   .item-detail .item-row .item-grid-label{margin-bottom:3px;}
   .item-card-x .btn-icon{width:22px;height:22px;line-height:20px;font-size:13px;color:var(--gray-400);}
   .item-card-x .btn-icon:hover{color:var(--red,#dc2626);}
+  .item-badge{display:inline-block;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:600;background:var(--gray-100);color:var(--gray-600);}
   .item-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
   .item-name-input{flex:1;font-size:13px;font-weight:600;border:none;background:transparent;color:var(--gray-900);padding:0;font-family:var(--font);}
   .item-name-input:focus{outline:none;}
@@ -161,7 +159,6 @@
   .slider{flex:1;-webkit-appearance:none;height:4px;border-radius:99px;background:var(--gray-200);cursor:pointer;}
   .slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.2);}
 
-  .summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;}
   /* 핵심 결과 배너 */
   .hero-result{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);margin-bottom:11px;}
   .hero-result.reach{background:linear-gradient(135deg,#16a34a,#15803d);}
@@ -169,10 +166,7 @@
   .hero-label{font-size:12px;font-weight:600;opacity:0.92;margin-bottom:6px;}
   .hero-value{font-size:26px;font-weight:800;line-height:1.15;letter-spacing:-0.5px;}
   .hero-sub{font-size:12px;opacity:0.92;margin-top:6px;}
-  .summary-card{background:var(--panel-bg);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);}
-  .summary-card-label{font-size:10px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;}
-  .summary-card-value{font-size:20px;font-weight:700;letter-spacing:-0.03em;line-height:1.1;}
-  .summary-card-sub{font-size:11px;color:var(--gray-500);margin-top:4px;}
+  .hero-info{font-size:12px;opacity:0.88;margin-top:5px;}
   .val-green{color:var(--green);}.val-red{color:var(--red);}.val-orange{color:var(--orange);}.val-blue{color:var(--blue);}
 
   .chart-card{background:var(--panel-bg);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);}
@@ -194,8 +188,9 @@
   /* 하위 섹션 */
   .home-sec{padding:12px 0;border-top:1px solid var(--border);}
   .home-sec:first-child{border-top:none;padding-top:2px;}
-  .home-sec-title{font-size:12.5px;font-weight:700;color:var(--gray-800);margin-bottom:4px;display:flex;align-items:center;gap:6px;}
-  .home-detail-toggle{margin-left:auto;padding:3px 9px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#fff;color:var(--gray-600);font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s;}
+  .home-sec-title{font-size:12.5px;font-weight:700;color:var(--gray-800);margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .home-detail-toggle{padding:3px 9px;border:1px solid var(--border);border-radius:var(--radius-sm);background:#fff;color:var(--gray-600);font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s;}
+  .home-detail-toggle:first-of-type{margin-left:auto;}
   .home-detail-toggle:hover{background:var(--gray-50);color:var(--gray-900);}
   .home-detail{margin-top:8px;}
   .loan-apply-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0 10px;padding:8px;background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius-sm);}
@@ -254,16 +249,18 @@
   .tooltip-title{font-weight:600;margin-bottom:5px;color:#e2e8f0;font-size:12px;}
 
   .hint{font-size:11px;color:var(--gray-500);margin-bottom:9px;line-height:1.5;}
+  .asset-tab-bar{display:flex;gap:0;margin-bottom:10px;border-bottom:2px solid var(--border);}
+  .asset-tab{padding:7px 18px;border:none;background:none;font-size:13px;font-weight:600;color:var(--gray-500);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;font-family:var(--font);transition:all .15s;}
+  .asset-tab.active{color:var(--blue);border-bottom-color:var(--blue);}
+  .asset-tab:hover:not(.active){color:var(--gray-700);}
 
   @media(max-width:768px){
     .layout{flex-direction:column;height:auto;overflow:visible;}
     .left-panel{width:100%;max-width:100%;border-right:none;border-bottom:1px solid var(--border);order:2;}
     .right-panel{padding:12px;order:1;}
-    .summary-grid{grid-template-columns:repeat(2,1fr);}
     .hero-value{font-size:22px;}
   }
   @media(max-width:480px){
-    .summary-grid{grid-template-columns:1fr 1fr;}
     .header-actions .btn span{display:none;}
   }
   /* 단계별 입력 마법사 */
@@ -283,6 +280,11 @@
   @keyframes wizFade{from{opacity:0;transform:translateX(10px);}to{opacity:1;transform:none;}}
   .wizard-nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border);}
   .wizard-nav .btn{flex:1;justify-content:center;padding:11px;font-size:14px;font-weight:700;}
+  .btn-outline-wiz{background:#fff;color:var(--gray-700);border:1.5px solid var(--gray-300);}
+  .btn-outline-wiz:hover{background:var(--gray-100);color:var(--gray-900);}
+  .wizard-intro{background:#f0f9ff;border-left:3px solid #2563eb;border-radius:6px;padding:12px 14px;margin-bottom:14px;}
+  .wizard-intro-main{font-size:13px;font-weight:700;color:#1e40af;margin-bottom:5px;line-height:1.5;}
+  .wizard-intro-sub{font-size:12px;color:#475569;line-height:1.6;}
   .btn-primary{background:var(--blue,#2563eb);color:#fff;border:none;}
   .btn-primary:hover{background:#1d4ed8;}
   .wiz-slot{display:none;}
@@ -304,12 +306,8 @@
 <div id="tooltip" class="tooltip-box"></div>
 
 <header class="header">
-  <div class="header-title">🏠 <span data-i18n="appTitle">내집마련 시뮬레이터</span></div>
+  <div class="header-title">🏠 <span data-i18n="appTitle">내집마련 시뮬레이터</span> <span style="font-size:11px;font-weight:400;opacity:0.6;margin-left:4px;">v1.2</span></div>
   <div class="header-actions">
-    <div class="seg seg-lang" id="langSeg">
-      <button class="seg-btn active" data-lang="ko" onclick="setLang('ko')">한국어</button>
-      <button class="seg-btn" data-lang="en" onclick="setLang('en')">EN</button>
-    </div>
     <select class="unit-select" id="unitSelect" onchange="onUnitChange()" title="입력 단위">
       <option value="1" data-i18n="uopt1">원 (1)</option>
       <option value="1000" data-i18n="uopt1000">천원 (천)</option>
@@ -321,9 +319,7 @@
     <button class="btn btn-ghost" onclick="openQuick()">⚡ <span data-i18n="quickRestart">빠른 입력</span></button>
     <button class="btn btn-ghost" onclick="exportExcel()">📊 <span data-i18n="excel">엑셀 다운로드</span></button>
     <button class="btn btn-ghost" onclick="showQA()">💬 <span data-i18n="qa">Q&amp;A</span></button>
-    <button class="btn btn-ghost" onclick="saveData()">💾 <span data-i18n="save">저장</span></button>
-    <button class="btn btn-ghost" onclick="loadData()">📂 <span data-i18n="load">불러오기</span></button>
-    <button class="btn btn-ghost" onclick="resetData()">🔄 <span data-i18n="reset">초기화</span></button>
+
   </div>
 </header>
 
@@ -355,16 +351,18 @@
         <div class="home-sec">
           <div class="home-sec-title">② <span data-i18n="secBuyCost">집 마련 비용 (취득세·기타)</span>
             <button class="home-detail-toggle" id="costDetailBtn" onclick="toggleHomeDetail('cost')">+ <span data-i18n="detailSettings">세부 설정</span></button>
+            <button class="home-detail-toggle" onclick="toggleCalc('acqCalc')">+ <span>취득세 산출식</span></button>
+            <button class="home-detail-toggle" onclick="toggleCalc('etcCalc')">+ <span>기타비용 산출식</span></button>
           </div>
           <!-- 요약(항상 표시): 취득세·기타 자동 계산 금액 -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;">
             <div class="home-cost-block">
-              <div class="home-cost-head"><span class="home-cost-name" data-i18n="homeAcqTax">취득세</span><span class="info-ic" onclick="toggleCalc('acqCalc')" data-i18n-title="seeCalc">🧮</span></div>
+              <div class="home-cost-head"><span class="home-cost-name" data-i18n="homeAcqTax">취득세</span></div>
               <div id="homeAcqAuto" class="home-cost-auto"></div>
               <div id="acqCalc" class="calc-box" style="display:none;"></div>
             </div>
             <div class="home-cost-block">
-              <div class="home-cost-head"><span class="home-cost-name" data-i18n="homeEtcCost">기타 비용</span><span class="info-ic" onclick="toggleCalc('etcCalc')" data-i18n-title="seeCalc">🧮</span></div>
+              <div class="home-cost-head"><span class="home-cost-name" data-i18n="homeEtcCost">기타 비용</span></div>
               <div id="homeEtcAuto" class="home-cost-auto"></div>
               <div id="etcCalc" class="calc-box" style="display:none;"></div>
             </div>
@@ -426,52 +424,73 @@
         <div class="home-sec">
           <div class="home-sec-title">③ <span data-i18n="secLoanLimit">대출 가능액 (LTV·DSR)</span>
             <button class="home-detail-toggle" id="loanDetailBtn" onclick="toggleHomeDetail('loan')">+ <span data-i18n="detailSettings">세부 설정</span></button>
+            <button class="home-detail-toggle" onclick="toggleCalc('loanCalc')">+ <span>산출식 보기</span></button>
           </div>
           <!-- 요약(항상 표시): 대출 가능 금액 -->
           <div class="home-cost-block" style="margin-top:6px;">
-            <div class="home-cost-head"><span class="home-cost-name" data-i18n="homeLoan">대출 가능 금액</span><span class="info-ic" onclick="toggleCalc('loanCalc')" data-i18n-title="seeCalc">🧮</span></div>
+            <div class="home-cost-head"><span class="home-cost-name" data-i18n="homeLoan">대출 가능 금액</span></div>
             <div id="homeLoanAuto" class="home-cost-auto"></div>
             <div id="loanCalc" class="calc-box" style="display:none;"></div>
           </div>
           <!-- 세부(접힘): LTV/정책상한/DSR 체크박스 + 지역·차주·금리·만기·금리유형·규제지역 -->
           <div class="home-detail" id="loanDetail" style="display:none;">
             <div class="home-sec-desc policy-note" data-i18n="policyNote">이 금액은 집값에 따라 시점별로 변동하며, 현재(2026년 6월 기준) 정책을 적용한 추정치입니다.</div>
-            <!-- 적용 항목 체크박스 (독립·복수 선택 가능) -->
-            <div class="loan-apply-grid">
-              <label class="home-toggle loan-apply-item">
-                <input type="checkbox" id="loanApplyLtv" onchange="setHomeLoanOpt('applyLtv',this.checked)">
-                <span data-i18n="loanApplyLtv">LTV 적용</span>
-              </label>
-              <label class="home-toggle loan-apply-item">
-                <input type="checkbox" id="loanApplyCap" onchange="setHomeLoanOpt('applyCap',this.checked)">
-                <span data-i18n="loanApplyCap">정책상한 적용 (627)</span>
-              </label>
-              <label class="home-toggle loan-apply-item">
-                <input type="checkbox" id="loanApplyDsr" onchange="setHomeLoanOpt('applyDsr',this.checked)">
-                <span data-i18n="loanApplyDsr">DSR 적용</span>
-              </label>
+            <!-- 대출액 계산 방식 선택 -->
+            <div class="home-field" style="margin-bottom:10px;">
+              <span class="field-label">대출액 계산 방식</span>
+              <select class="input" id="loanModeSelect" onchange="setLoanMode(this.value)">
+                <option value="auto">자동 계산</option>
+                <option value="manual">직접 입력</option>
+              </select>
+            </div>
+
+            <!-- 자동 계산 시: LTV/정책상한/DSR 체크박스 -->
+            <div id="loanAutoPanel">
+              <div class="loan-apply-grid">
+                <label class="home-toggle loan-apply-item">
+                  <input type="checkbox" id="loanApplyLtv" onchange="setHomeLoanOpt('applyLtv',this.checked)">
+                  <span data-i18n="loanApplyLtv">LTV 적용</span>
+                </label>
+                <label class="home-toggle loan-apply-item">
+                  <input type="checkbox" id="loanApplyCap" onchange="setHomeLoanOpt('applyCap',this.checked)">
+                  <span data-i18n="loanApplyCap">정책상한 적용 (627)</span>
+                </label>
+                <label class="home-toggle loan-apply-item">
+                  <input type="checkbox" id="loanApplyDsr" onchange="setHomeLoanOpt('applyDsr',this.checked)">
+                  <span data-i18n="loanApplyDsr">DSR 적용</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 직접 입력 시: 비율/정액 입력 -->
+            <div id="loanManualPanel" style="display:none; margin-bottom:10px;">
+              <div class="seg" id="homeLtvManualModeSeg" style="margin-bottom:6px;">
+                <button class="seg-btn active" data-mode="pct" onclick="setHomeLtvManualMode('pct')">집값의 %</button>
+                <button class="seg-btn" data-mode="fixed" onclick="setHomeLtvManualMode('fixed')">정액</button>
+              </div>
+              <div class="input-wrap">
+                <input type="number" step="0.1" min="0" id="homeLtvVal" oninput="setHomeLtvManualVal(this.value)">
+                <span class="input-unit-tag" id="homeLtvValUnit">%</span>
+              </div>
+              <div class="home-sec-desc" style="margin-top:4px;">자동 계산(LTV·정책상한·DSR)을 무시하고 직접 지정한 값을 사용합니다.</div>
             </div>
             <div id="homeLoanAutoOpts">
               <div class="home-extra-grid">
                 <div class="home-field">
-                  <span class="field-label" data-i18n="homeRegion">지역</span>
+                  <span class="field-label" data-i18n="homeRegion">지역 구분</span>
                   <select class="input" id="homeRegion" onchange="setHomeLoanOpt('region',this.value)">
-                    <option value="SEOUL" data-i18n="regSeoul">서울</option>
-                    <option value="METRO" data-i18n="regMetro">과밀억제권역</option>
-                    <option value="METRO_CITY" data-i18n="regMetroCity">광역시</option>
-                    <option value="OTHER" data-i18n="regOther">기타 지역</option>
+                    <option value="SEOUL">규제지역 및 조정대상지역</option>
+                    <option value="OTHER">기타 지역</option>
                   </select>
                 </div>
                 <div class="home-field">
                   <span class="field-label" data-i18n="homeStatus">차주 조건</span>
                   <select class="input" id="homeStatus" onchange="setHomeLoanOpt('status',this.value)">
-                    <option value="NORMAL" data-i18n="stNormal">무주택/처분조건부</option>
-                    <option value="MULTI_HOUSE" data-i18n="stMulti">다주택(추가구입)</option>
+                    <option value="NORMAL">무주택 (1주택 처분조건)</option>
+                    <option value="COMMONER">서민·실수요자</option>
+                    <option value="FIRST_HOME">생애최초 구매자</option>
+                    <option value="MULTI_HOUSE">다주택자</option>
                   </select>
-                </div>
-                <div class="home-field">
-                  <span class="field-label" data-i18n="homeRooms">방 공제 수</span>
-                  <div class="input-wrap"><input type="number" id="homeRooms" min="0" oninput="setHomeLoanOpt('roomCount',this.value)"></div>
                 </div>
               </div>
               <div class="home-extra-grid" style="margin-top:8px;">
@@ -493,7 +512,6 @@
                   </select>
                 </div>
               </div>
-              <label class="home-toggle" style="margin-top:8px;"><input type="checkbox" id="homeRegulated" onchange="setHomeLoanOpt('regulated',this.checked)"><span data-i18n="homeRegulated">규제지역</span></label>
             </div>
             <div class="home-sub-hint" data-i18n="homeLoanHint">대출 가능액 = 체크된 한도(LTV·정책상한·DSR)의 min. LTV=집값×LTV−방공제−선순위. 정책상한=15억↓6억/15~25억 4억/25억↑2억(수도권·규제). DSR=소득×40%에서 기존 원리금 뺀 여력으로 역산.</div>
             <div class="home-sub-hint" data-i18n="loanPriorAutoNote" style="color:#9a6b00;">선순위 채권액은 좌측 부채 중 'LTV 선순위 담보'로 체크한 항목에서 자동 합산됩니다.</div>
@@ -514,34 +532,54 @@
     <!-- 자산 및 부채 -->
     <div class="section" id="secAssetWrap">
       <div class="section-header">
-        <span class="section-title" data-i18n="secAsset">자산 및 부채</span>
+        <span class="section-title">자산 및 부채</span>
         <span class="section-badge badge-gray" id="assetCount">PORTFOLIO</span>
       </div>
-      <p class="hint" data-i18n-html="hintAsset">현재 보유한 자산·부채를 입력하세요. 부채는 상환방식과 만기를 함께 설정합니다.</p>
-      <div id="assetList"></div>
-      <button class="add-btn" id="addAssetBtn" data-i18n="addAssetItem" onclick="addAssetItem()">+ 자산 / 부채 항목 추가</button>
+
+      <!-- 탭 버튼 -->
+      <div class="asset-tab-bar">
+        <button class="asset-tab active" id="tabAsset" onclick="switchAssetTab('asset')">🟢 자산</button>
+        <button class="asset-tab" id="tabDebt" onclick="switchAssetTab('debt')">🔴 부채</button>
+      </div>
+
+      <!-- 자산 탭 패널 -->
+      <div id="panelAsset">
+        <div id="assetList"></div>
+        <button class="add-btn" id="addAssetBtn" onclick="addAssetItem({type:'asset'})">+ 자산 항목 추가</button>
+      </div>
+
+      <!-- 부채 탭 패널 -->
+      <div id="panelDebt" style="display:none;">
+        <div id="debtList"></div>
+        <button class="add-btn" id="addDebtBtn" onclick="addAssetItem({type:'debt'})">+ 부채 항목 추가</button>
+      </div>
     </div>
 
     <!-- 수입+지출 (마법사 3단계로 묶음) -->
     <div id="secFlowWrap">
-    <!-- 수입 -->
     <div class="section">
       <div class="section-header">
-        <span class="section-title" data-i18n="secIncome">수입</span>
-        <span class="section-badge badge-green" id="incomeCount">▲ INCOME</span>
+        <span class="section-title">수입 및 지출</span>
+        <span class="section-badge badge-gray" id="flowCount">FLOW</span>
       </div>
-      <div id="incomeList"></div>
-      <button class="add-btn" id="addIncomeBtn" data-i18n="addIncome" onclick="addItem('income')">+ 수입 항목 추가</button>
-    </div>
 
-    <!-- 지출 -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-title" data-i18n="secExpense">지출</span>
-        <span class="section-badge badge-red" id="expenseCount">▼ EXPENSE</span>
+      <!-- 탭 버튼 -->
+      <div class="asset-tab-bar">
+        <button class="asset-tab active" id="tabIncome" onclick="switchFlowTab('income')">▲ 수입</button>
+        <button class="asset-tab" id="tabExpense" onclick="switchFlowTab('expense')">▼ 지출</button>
       </div>
-      <div id="expenseList"></div>
-      <button class="add-btn" id="addExpenseBtn" data-i18n="addExpense" onclick="addItem('expense')">+ 지출 항목 추가</button>
+
+      <!-- 수입 탭 패널 -->
+      <div id="panelIncome">
+        <div id="incomeList"></div>
+        <button class="add-btn" id="addIncomeBtn" onclick="addItem('income')">+ 수입 항목 추가</button>
+      </div>
+
+      <!-- 지출 탭 패널 -->
+      <div id="panelExpense" style="display:none;">
+        <div id="expenseList"></div>
+        <button class="add-btn" id="addExpenseBtn" onclick="addItem('expense')">+ 지출 항목 추가</button>
+      </div>
     </div>
     </div>
 
@@ -562,6 +600,13 @@
 
   <div class="right-panel">
 
+    <!-- ① 핵심 결과 배너 + 요약 카드 (최상단) -->
+    <div class="hero-result" id="heroResult">
+      <div class="hero-label" data-i18n="heroLabel">🏠 주택 구입 가능 시점</div>
+      <div class="hero-value" id="hero-when">—</div>
+      <div class="hero-sub" id="hero-sub">—</div>
+    </div>
+
     <!-- ② 순자산 vs 필요 자기자본 차트 -->
     <div class="chart-card" id="homeChartCard">
       <div class="chart-title" data-i18n="chartHomeTitle">기간별 순자산 vs 필요 자기자본</div>
@@ -569,32 +614,11 @@
       <div><canvas id="homeChart" height="200"></canvas></div>
     </div>
 
-
-
     <!-- 시점별 집값·취득세·기타비용·대출가능액 차트 (이중축) -->
     <div class="chart-card" id="homeCostChartCard">
       <div class="chart-title" data-i18n="chartCostTitle">시점별 집값 · 취득세 · 기타비용 · 대출가능액</div>
       <div><canvas id="homeCostChart" height="210"></canvas></div>
       <div class="chart-axis-note" data-i18n="chartCostNote">실선=좌축(집값·대출가능액), 점선=좌축 보조(LTV·DSR 한도), 가는 선=우축(취득세·기타비용). DSR은 집값이 아닌 소득·기존부채에 연동되어 다르게 움직일 수 있습니다.</div>
-    </div>
-
-    <!-- ② 핵심 결과 배너 + 요약 카드 -->
-    <div class="hero-result" id="heroResult">
-      <div class="hero-label" data-i18n="heroLabel">🏠 주택 구입 가능 시점</div>
-      <div class="hero-value" id="hero-when">—</div>
-      <div class="hero-sub" id="hero-sub">—</div>
-    </div>
-    <div class="summary-grid" id="summaryGrid">
-      <div class="summary-card" id="buyPriceCard">
-        <div class="summary-card-label" data-i18n="buyTimePrice">구매 시점 집값</div>
-        <div class="summary-card-value val-blue" id="s-buy-price">—</div>
-        <div class="summary-card-sub" id="s-buy-price-sub">—</div>
-      </div>
-      <div class="summary-card" id="homeReachCard">
-        <div class="summary-card-label" data-i18n="homeReachTitle">필요 자기자본 (구입 시점)</div>
-        <div class="summary-card-value" id="s-home-reach" style="color:var(--gray-700)">—</div>
-        <div class="summary-card-sub" id="s-home-reach-sub">—</div>
-      </div>
     </div>
 
 
@@ -674,10 +698,15 @@
       <span class="wizard-step-dot active" data-step="1"></span>
       <span class="wizard-step-dot" data-step="2"></span>
       <span class="wizard-step-dot" data-step="3"></span>
+      <span class="wizard-step-dot" data-step="4"></span>
     </div>
 
     <!-- STEP 1 · 예상 집값 가정 -->
     <div class="wizard-step" data-qstep="1">
+      <div class="wizard-intro">
+        <p class="wizard-intro-main">지금 자산으로 집을 사려면 얼마나 더 모아야 할까요?</p>
+        <p class="wizard-intro-sub">집값이 오르는 속도와 대출 한도까지 고려해서,<br>내가 집을 살 수 있는 시점을 딱 찾아드릴게요.</p>
+      </div>
       <div class="wizard-subtitle" data-i18n="quickStep1Desc">① 사려는 집의 현재 시세와 예상 상승률을 입력하세요.</div>
       <div class="wizard-body">
         <div class="quick-field">
@@ -694,9 +723,63 @@
       </div>
     </div>
 
-    <!-- STEP 2 · 자산 및 부채 -->
+    <!-- STEP 2 · 대출 가능액 조건 -->
     <div class="wizard-step" data-qstep="2" style="display:none;">
-      <div class="wizard-subtitle" data-i18n="quickStep2Desc">② 현재 보유한 자산과 부채를 입력하세요. (여러 개 추가 가능)</div>
+      <div class="wizard-subtitle">② 주택 구입 시점의 대출 가능액 조건을 입력하세요.</div>
+      <div class="wizard-body">
+        <div class="quick-field">
+          <label>지역 구분</label>
+          <select class="input" id="qRegion">
+            <option value="SEOUL">규제지역 및 조정대상지역</option>
+            <option value="OTHER">기타 지역</option>
+          </select>
+        </div>
+        <div class="quick-field">
+          <label>차주 조건</label>
+          <select class="input" id="qStatus">
+            <option value="NORMAL">무주택 (1주택 처분조건)</option>
+            <option value="COMMONER">서민·실수요자</option>
+            <option value="FIRST_HOME">생애최초 구매자</option>
+            <option value="MULTI_HOUSE">다주택자</option>
+          </select>
+        </div>
+        <div class="quick-field">
+          <label>대출 약정금리 (연)</label>
+          <div class="input-wrap">
+            <input type="number" step="0.1" id="qLoanRate" value="4.5">
+            <span class="input-unit-tag">%</span>
+          </div>
+        </div>
+        <div class="quick-field">
+          <label>대출 만기</label>
+          <div class="input-wrap">
+            <input type="number" id="qLoanTerm" value="30">
+            <span class="input-unit-tag">년</span>
+          </div>
+        </div>
+        <div class="quick-field">
+          <label>금리 유형 (DSR 산정)</label>
+          <select class="input" id="qLoanType">
+            <option value="mortgage_var">변동형</option>
+            <option value="mortgage_mix">5년 혼합형</option>
+            <option value="mortgage_periodic">5년 주기형</option>
+            <option value="mortgage_fixed">순수 고정형</option>
+          </select>
+        </div>
+        <div class="quick-field">
+          <label>상환 방식</label>
+          <select class="input" id="qRepayMethod">
+            <option value="equal_payment">원리금균등</option>
+            <option value="equal_principal">원금균등</option>
+            <option value="bullet">만기일시상환</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 · 자산 및 부채 -->
+    <div class="wizard-step" data-qstep="3" style="display:none;">
+      <div class="wizard-subtitle">③ 현재 보유한 자산과 부채를 입력하세요. (여러 개 추가 가능)</div>
       <div class="wizard-body">
         <div class="quick-section-label" data-i18n="quickAssetsLabel">자산</div>
         <div id="qAssetList"></div>
@@ -707,9 +790,9 @@
       </div>
     </div>
 
-    <!-- STEP 3 · 수입 및 지출 -->
-    <div class="wizard-step" data-qstep="3" style="display:none;">
-      <div class="wizard-subtitle" data-i18n="quickStep3Desc">③ 들어오고 나가는 금액과 상승률을 입력하세요. (여러 개 추가 가능)</div>
+    <!-- STEP 4 · 수입 및 지출 -->
+    <div class="wizard-step" data-qstep="4" style="display:none;">
+      <div class="wizard-subtitle">④ 들어오고 나가는 금액과 상승률을 입력하세요. (여러 개 추가 가능)</div>
       <div class="wizard-body">
         <div class="quick-section-label" data-i18n="quickIncomeLabel">수입</div>
         <div id="qIncomeList"></div>
@@ -721,7 +804,7 @@
     </div>
 
     <div class="wizard-nav">
-      <button class="btn btn-ghost" id="qPrevBtn" onclick="quickPrev()" style="display:none;"><span data-i18n="wizPrev">← 이전</span></button>
+      <button class="btn btn-outline-wiz" id="qPrevBtn" onclick="quickPrev()" style="display:none;"><span data-i18n="wizPrev">← 이전</span></button>
       <button class="btn btn-primary" id="qNextBtn" onclick="quickNext()" style="flex:1;"><span data-i18n="wizNext">다음 →</span></button>
       <button class="btn btn-primary" id="qCalcBtn" onclick="quickCalc()" style="flex:1;display:none;"><span data-i18n="quickCalc">계산하기</span></button>
     </div>
@@ -764,6 +847,22 @@ if(typeof Chart === 'undefined'){
 }
 let idCnt = 50;
 const MAX_ITEMS = 8;   // 정형화: 자산·부채 / 수입 / 지출 각 항목 최대 개수
+let currentAssetTab = 'asset';
+function switchAssetTab(tab){
+  currentAssetTab = tab;
+  document.getElementById('panelAsset').style.display = (tab==='asset') ? '' : 'none';
+  document.getElementById('panelDebt').style.display  = (tab==='debt')  ? '' : 'none';
+  document.getElementById('tabAsset').classList.toggle('active', tab==='asset');
+  document.getElementById('tabDebt').classList.toggle('active',  tab==='debt');
+}
+let currentFlowTab = 'income';
+function switchFlowTab(tab){
+  currentFlowTab = tab;
+  document.getElementById('panelIncome').style.display  = (tab==='income')  ? '' : 'none';
+  document.getElementById('panelExpense').style.display = (tab==='expense') ? '' : 'none';
+  document.getElementById('tabIncome').classList.toggle('active',  tab==='income');
+  document.getElementById('tabExpense').classList.toggle('active', tab==='expense');
+}
 // 카드별 '세부 설정' 펼침 상태 기억(항목 id → 열림). 렌더 후에도 유지.
 const detailOpen = new Set();
 // 기능7·8: 집마련비용/대출가능액/자산배분 섹션 세부 펼치기(+/−)
@@ -810,7 +909,7 @@ const INCOME_CLASS_DSR = { salary:true, business:true, dividend:false, pension:f
 const EXPENSE_CLASSES = ['living','housing','education','fixed','leisure'];
 let basis = 'year';
 let gran = 'year';   // 'year' | 'month' — 시뮬레이션 단위(연도별/월별)
-let lang = 'ko';     // 'ko' | 'en' — 표시 언어
+const lang = 'ko';   // 한국어 전용
 
 // ════════════════════════ i18n 사전 ════════════════════════
 const I18N={
@@ -905,101 +1004,10 @@ ko:{
   xlColAmount:'금액(원)', xlColPeriod:'주기', xlColRate:'증가율(%)', xlColEnd:'종료시점', xlColSeg:'구간', xlColTarget:'배분 대상', xlColPct:'비율(%)',
   xlIncomePrefix:'[수입] ', xlExpensePrefix:'[지출] ', xlAssetPrefix:'[자산] ', xlDebtPrefix:'[부채] ',
   noAlloc:'(배분 없음 — 현금 잔류)', deletedItem:'(삭제된 항목)',
-},
-en:{
-  appTitle:'Home Purchase Timing', excel:'Excel', qa:'Q&A', save:'Save', load:'Load', reset:'Reset',
-  secBasic:'Settings', secIncome:'Income', secExpense:'Expense', secAsset:'Assets & Debts', secAlloc:'Allocation Strategy',
-  simUnit:'Simulation unit', granYear:'Yearly', granMonth:'Monthly', simPeriod:'Simulation period',
-  periodStartYear:'Start period (yr)', periodEndYear:'End period (yr)', periodHint:'Shows the start–end year range from now, in years. (Affordable point is auto-detected regardless of this setting.)',
-  inputUnit:'Input unit', unitWon:'KRW', unitThousand:'×1K', unitMan:'×10K', unitTenMan:'×100K', unitMillion:'×1M', unitEok:'×100M',
-  uopt1:'KRW (×1)', uopt1000:'×1,000', uopt10000:'×10,000', uopt100000:'×100,000', uopt1000000:'×1,000,000', uopt100000000:'×100,000,000',
-  itemName:'Name', amount:'Amount', curHolding:'Current holding', category:'Type', asset:'Asset', debt:'Debt',
-  growthMode:'Growth', rateModeForDebt:'Interest rate type', fixed:'Fixed', rate:'Percent', custom:'Custom', rateInterest:'Percent (rate)',
-  yearlyIncrease:'Annual increase', yearlyRate:'Annual rate', segTitle:'Segmented growth', segEnd:'End', method:'Method', amtLabel:'Amount', pctLabel:'Rate', applyAfter:'Applies after', increaseAmt:'Increase', increaseRate:'Rate',
-  repayMethod:'Repayment', bullet:'Bullet', equalPrincipal:'Equal principal', equalPayment:'Equal payment', maturity:'Maturity',
-  dsrTypeLabel:'Loan type (DSR)', dtVar:'Mortgage variable', dtMix:'Mortgage 5yr-mixed', dtPeriodic:'Mortgage 5yr-periodic', dtFixed:'Mortgage pure-fixed', dtCredit:'Credit loan', dtOther:'Other loan',
-  debtClassLabel:'Debt type', dcMortgage:'Mortgage loan', dcJeonse:'Jeonse(deposit) loan', dcCredit:'Credit loan', dcOtherLoan:'Other loan (auto·card etc.)', dcPersonal:'Personal loan (family etc.)',
-  dsrIncomeLabel:'Count as DSR income (used for loan limit)',
-  incomeClassLabel:'Income type', icSalary:'Employment', icBusiness:'Business·Rental', icDividend:'Dividend·Interest', icPension:'Pension·Other',
-  expenseClassLabel:'Expense type', ecLiving:'Living', ecHousing:'Housing', ecEducation:'Education', ecFixed:'Fixed expense', ecLeisure:'Other·Leisure',
-  period:'Cycle', monthly:'Monthly', yearly:'Yearly', incRate:'Rate%/yr', incRateHint:'Annual growth rate. In monthly mode it is converted to monthly compounding.', startP:'Start', endP:'End', endEmpty:'(blank=until end)', untilEnd:'cont.', detailSettings:'Details',
-  reinvestPct:'Reinvest%', disposalRank:'Sell rank', allocAsset:'Asset', addAsset:'+ Add asset', periodEnd:'Period {n} end', untilCashflowEnd:'Until end',
-  reinvestSum:'Reinvest total', cashLeft:'(rest stays as cash)', overNorm:'(over 100% — normalized)', addPeriod:'+ Add period',
-  addIncome:'+ Add income', addExpense:'+ Add expense', addAssetItem:'+ Add asset / debt',
-  finalNetWorth:'Final net worth', buyTimePrice:'Home price at purchase', totalIncome:'Total income', totalExpense:'Total expense', netCashflow:'Net cashflow', netWorth:'Net worth', availableFunds:'Available funds',
-  yearsAfter:'After {n} years',
-  chartFlow:'Income · Expense · Net cashflow', chartAsset:'Net worth over time (by item + total)', totalNetLine:'Total net worth', netWorthSum:'Net worth total',
-  tablePeriodYear:'Year', tablePeriodAge:'Age', tablePeriodElapsed:'When', tableHint:'Hover a row to see balances by item', tableTitle:'Detailed cashflow by period',
-  ttDetail:'details', ttIncome:'▲ Income', ttExpense:'▼ Expense', ttBalances:'◈ Balances by item', ttClose:'Click to close',
-  msgSaved:'Settings saved ✓', msgLoaded:'Settings loaded ✓', msgNoData:'No saved data', msgExcel:'Excel file downloaded ✓', msgExcelFail:'Error generating Excel', msgExcelLib:'Excel library failed to load — refresh and retry',
-  qaMsg:'💬 Contact: <b>actkim1224@gmail.com</b>', confirmReset:'Reset to default settings?',
-  hintAsset:'Enter your current assets and debts. For debts, set the repayment method and maturity.',
-  hintAlloc:'Each period, debts are repaid first (method & maturity set on each debt item), then the remaining net cashflow is invested by <b>reinvestment weight</b>. If repayment exceeds net cashflow, assets are sold starting from the highest <b>sell rank</b> (1 first).',
-  // ── Home purchase ──
-  secHome:'Expected Price Assumptions',
-  wizardRestart:'Step input', wizardPrev:'Back', wizardNext:'Next', wizardDone:'Done', wizardSkip:'Enter all at once →', wizStep3:'Income & Expense',
-  quickRestart:'Quick start', quickTitle:'🏠 Quick home-buying check', quickDesc:'Enter just these 4 — the rest uses defaults.',
-  quickStep1Desc:'① Enter the home\u2019s current price and expected growth.', quickStep2Desc:'② Enter your current assets and debts. (add multiple)', quickStep3Desc:'③ Enter income/expense amounts and growth rates. (add multiple)',
-  quickAssetsLabel:'Assets', quickDebtsLabel:'Debts', quickIncomeLabel:'Income', quickExpenseLabel:'Expense',
-  quickAddAsset:'+ Add asset', quickAddDebt:'+ Add debt', quickAddIncome:'+ Add income', quickAddExpense:'+ Add expense',
-  quickExpense:'Monthly living expense', wizPrev:'← Back', wizNext:'Next →', dtMortgage:'Mortgage loan',
-  quickSalary:'Monthly salary', quickFinancial:'Financial assets (cash·deposit·stocks)', quickDebt:'Debt', quickCalc:'Calculate', quickManual:'Enter everything manually →',
-  homePrice:'Target home current price', homeGrowth:'Expected price growth (annual)', homeStdPrice:'Standard price (optional)', homeArea:'Exclusive area (㎡)', homeAreaOver:'Exclusive area over 85㎡ (rural tax 0.2% if checked)',
-  homeAcqTax:'Acquisition tax', homeEtcCost:'Other costs', homeLoan:'Loan available',
-  homeAuto:'Auto', homeManual:'Manual', byPct:'% of price', byFixed:'Fixed', homeNowBase:'now', homeApplyMin:'use',
-  homeRegion:'Region', regSeoul:'Seoul', regMetro:'Metro (overconc.)', regMetroCity:'Metro city', regOther:'Other',
-  homeRegulated:'Regulated zone', homeStatus:'Borrower status (first-time: see checkbox)', stNormal:'No-home/conditional', stFirst:'First-time', stMulti:'Multi-home (extra)',
-  homeRooms:'Room deductions', homeLoanRate:'Loan rate (annual)', homeLoanTerm:'Loan term (yrs)', homeLoanType:'Rate type (for DSR)', unitYear:'yr',
-  dsrIncludeLabel:'Include in DSR (count this debt for loan limit)', ltvPriorLabel:'LTV prior lien (secured on this home → deducted from LTV)',
-  homeExtraCost:'Extra cost', homeExtraDesc:'Interior, options, contingency, etc. (default 0)',
-  homeFirstTime:'First-time home purchase',
-  assetClassLabel:'Asset class', acFinancial:'Financial', acRealEstate:'Real estate', acCash:'Cash·Deposit', acStock:'Stocks·Funds·ETF', acCrypto:'Crypto', acPension:'Pension·Insurance', acEtc:'Other asset', sellFeeLabel:'Sale fee (%)',
-  reCgtTitle:'Capital gains tax on sale', acquPrice:'Acquisition price', acquPricePh:'blank = current value', acquYearsAgo:'Acquired (years ago)',
-  cgtMode:'CGT calc', cgtAuto:'Auto', cgtManual:'Manual', cgtManualValue:'Enter CGT amount',
-  oneHouseLabel:'1-home exemption (≤1.2B exempt, only excess taxed)', adjustedLabel:'Regulated-zone surcharge (+20%p, no LTSD)',
-  cgtNote:'Approximation using base rate (6–45%) + long-term holding deduction + basic deduction. Short-term/3-home surcharge/precise apportionment excluded. Confirm with NTS or a tax accountant.',
-  disposalToggle:'Reflect disposal cost·CGT', disposalApplyLabel:'Reflect disposal cost·CGT (when selling this asset)', disposalNote:'When on, affordability uses \'realized net worth\' after sale fees·CGT when liquidating assets for equity.',
-  thMyEquityNet:'Realized net worth', thExtra:'Extra',
-  calcPriorAuto:'Prior liens (sum of debts marked as LTV prior)', loanPriorAutoNote:'Prior liens are auto-summed from debts marked \'LTV prior lien\' on the left.',
-  homeLoanHint:'Loan = min(LTV limit, DSR limit). LTV=price×LTV−room deduction−prior liens (policy cap). DSR=back-solved from (income×40% − existing loan payments) using the stress rate.',
-  secFuturePrice:'Future home price', secFuturePriceDesc:'Projects the home price over time using your growth rate.',
-  secBuyCost:'Purchase costs (acq.tax·other)', secLoanLimit:'Loan available (LTV·DSR)',
-  policyNote:'These amounts change with the home price over time and reflect current policy as of June 2026. Actual figures may differ.',
-  seeCalc:'See calculation', calcStep:'Step', calcColNow:'Now', calcManual:'Manual input',
-  calcTaxBase:'Tax base (acquisition price)', calcRate:'Applied rate', calcAcqAmt:'Acquisition tax', calcEduTax:'Local edu tax (tax×10%)', calcRuralTax:'Rural tax (×0.2% if >85㎡)', calcTotalAcq:'Total acq. tax',
-  calcFirstHome:'First-home relief (≤1.2B, up to ₩2M)', calcFirstHomeNote:'First-time: homes ≤₩1.2B get up to ₩2M off the base acquisition tax regardless of income (2026 approximation). Local edu/rural taxes are separate. Regional specials (e.g. ₩3M in depopulation areas) not applied.',
-  calcAcqNote:'1–2 home rate: ≤600M 1.0% / 600–900M linear(1–3%) / >900M 3.0%. Multi-home/regulated surcharge not applied.',
-  calcEtcParts:'Includes: agent fee, registration, housing bond discount, stamp duty, moving', calcEtcEst:'Estimate (of price)', calcTotalEtc:'Total other',
-  calcEtcNote:'Auto mode ≈0.7% of price. Usually not covered by the loan — prepare cash.',
-  loanApplyLtv:'Apply LTV', loanApplyCap:'Apply policy cap (627)', loanApplyDsr:'Apply DSR',
-  calcLtvBlock:'[LTV limit]', calcCollateral:'Collateral (price×LTV%)', calcRoomDed:'Room deduction (deposit×rooms)', calcPrior:'Prior liens', calcCap:'Tiered cap (≤1.5B 600M·1.5–2.5B 400M·>2.5B 200M)', calcNoCap:'None', calcLtvLimit:'LTV limit',
-  calcCapBlock:'[Policy cap (627)]', calcCapLabel:'Policy cap',
-  calcDsrBlock:'[DSR limit]', calcDsrIncome:'DSR income (annual)', calcDsrCap:'Capacity (income×40%)', calcExisting:'Existing loan payments', calcCapacity:'Annual capacity', calcDsrLimit:'DSR limit (back-solved)', calcApplyMin:'Applied = min(LTV, DSR)',
-  calcNotApplied:'Not applied (unchecked)',
-  calcLoanNote:'Stress rate is for limit calc only (not actual interest). DSR follows income/existing debt, not price.',
-  chartHomeTitle:'Net worth vs required equity', homeNeedLine:'Required equity', homePriceLine:'Home price',
-  chartCostTitle:'Required funds over time (chart)',
-  chartCostNote:'Shaded = equity gap (price − loan). Bold=price, dashed=LTV·DSR limit, thin=acq.tax·other.',
-  ccPrice:'Price (L)', ccLoan:'Loan (L)', ccLtv:'LTV limit (L)', ccDsr:'DSR limit (L)', ccAcq:'Acq.tax (R)', ccEtc:'Other (R)',
-  axisLeft:'L', axisRight:'R', axisLeftTitle:'Price·Loan', axisRightTitle:'Tax·Other',
-  homeTableTitle:'Required amount by period', homeBadgeReach:'🏠 Affordable', homeBadgeNever:'Not affordable in period',
-  homeReachTitle:'Required equity (at purchase)', homeReachSub:'Required equity {v}', homeNeverReach:'Not affordable within period', homeNeverShort:'Not affordable',
-  heroLabel:'🏠 When you can buy a home', homeReachLabel:'🏠 Buy', heroReach:'Affordable {p}', heroReachSub:'Required equity then: {v}', heroNever:'Not affordable within the set period', heroNeverSub:'Try extending the period or adjusting price/loan conditions',
-  thHomePrice:'Proj. price', thAcqTax:'Acq. tax', thEtc:'Other', thTotalCost:'Total cost', thLtv:'LTV limit', thDsr:'DSR limit', thLoan:'Loan', thNeedEquity:'Req. equity', thMyNet:'My net worth', thGap:'Surplus/Deficit',
-  xlSheetHome:'Home Purchase', xlHomePeriod:'Period',
-  warnEndBeforeStart:'⚠ End is before start — this item is excluded', warnMatBeforeStart:'⚠ Maturity is before start — adjusted to start',
-  newItem:'New item', newIncome:'New income', newExpense:'New expense', maxItemsMsg:'You can add up to {n} items',
-  defSalary:'Salary', defDividend:'Dividend·Interest', defLiving:'Living', defHousing:'Housing', defCash:'Cash·Deposit', defStock:'Stocks·Invest', defMortgage:'Mortgage',
-  xlReportTitle:'Home Purchase Simulator — Result Report', xlGenTime:'Generated', xlBasis:'Input basis', xlStart:'Start', xlSimUnit:'Simulation unit', xlSimPeriod:'Simulation period', xlUnit:'Unit',
-  xlSheetResult:'Conditions & Results', xlSheetAsset:'Assets & Debts', xlSheetIncome:'Income', xlSheetExpense:'Expense', xlSheetAlloc:'Allocation',
-  xlColName:'Name', xlColCat:'Type', xlColInit:'Initial (KRW)', xlColStart:'Start', xlColGrowth:'Growth/Rate', xlColRepay:'Repayment', xlColMat:'Maturity',
-  xlColAmount:'Amount (KRW)', xlColPeriod:'Cycle', xlColRate:'Rate(%)', xlColEnd:'End', xlColSeg:'Period', xlColTarget:'Target', xlColPct:'Weight(%)',
-  xlIncomePrefix:'[Income] ', xlExpensePrefix:'[Expense] ', xlAssetPrefix:'[Asset] ', xlDebtPrefix:'[Debt] ',
-  noAlloc:'(no allocation — cash)', deletedItem:'(deleted item)',
 }
 };
 function t(key,vars){
-  let s=(I18N[lang]&&I18N[lang][key]!=null)?I18N[lang][key]:(I18N.ko[key]!=null?I18N.ko[key]:key);
+  let s=(I18N.ko[key]!=null)?I18N.ko[key]:key;
   if(vars)for(const k in vars)s=s.replace(new RegExp('\\{'+k+'\\}','g'),vars[k]);
   return s;
 }
@@ -1033,17 +1041,12 @@ function classLabel(it){
 }
 // 항목 표시 이름: 이제 '종류'가 곧 이름. (구버전 호환 폴백 포함)
 function displayName(it){ return classLabel(it); }
-function setLang(l){
-  if(l===lang)return; lang=l;
-  document.querySelectorAll('#langSeg .seg-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
-  applyStaticI18n(); renderAll(); update(); updateStepsLabel();
-}
 // data-i18n 속성을 가진 정적 요소 텍스트 갱신
 function applyStaticI18n(){
   document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent=t(el.getAttribute('data-i18n')); });
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML=t(el.getAttribute('data-i18n-html')); });
   document.querySelectorAll('[data-i18n-title]').forEach(el=>{ el.setAttribute('title', t(el.getAttribute('data-i18n-title'))); });
-  document.title=t('appTitle')+(lang==='en'?' — When can you buy a home?':' — 언제 집을 살 수 있을까');
+  document.title=t('appTitle')+' — 언제 집을 살 수 있을까';
   // 언어 전환 시 동적 라벨도 갱신: 시작연도/나이, 테이블 기간 헤더, 단위 설명
   const thp=document.getElementById('th-period'); if(thp) thp.textContent=t('tablePeriodElapsed');
   const thph=document.getElementById('th-home-period'); if(thph) thph.textContent=t('tablePeriodElapsed');
@@ -1077,8 +1080,12 @@ const HOME_CONFIG = {
   ETC_COST_RATE: 0.007,       // 기타비용 ≈ 예상집값의 0.7%
   // ── LTV (2025.6.27 대책) ──
   LTV_MATRIX: {
-    REG: { NORMAL: 0.50, FIRST_HOME: 0.70, MULTI_HOUSE: 0.00 },
-    NON: { NORMAL: 0.70, FIRST_HOME: 0.80, MULTI_HOUSE: 0.00 },
+    // 규제지역 및 조정대상지역
+    REG: { NORMAL: 0.40, FIRST_HOME: 0.70, COMMONER: 0.70, MULTI_HOUSE: 0.00 },
+    // 기타 지역 (수도권 비규제)
+    NON_CAPITAL: { NORMAL: 0.70, FIRST_HOME: 0.70, COMMONER: 0.70, MULTI_HOUSE: 0.00 },
+    // 기타 지역 (비수도권/지방)
+    NON_LOCAL: { NORMAL: 0.70, FIRST_HOME: 0.80, COMMONER: 0.70, MULTI_HOUSE: 0.60 },
   },
   // ── 정책 대출한도 상한(Cap) ── 수도권·규제지역 주택구입 목적 주담대만 적용(비규제·지방은 무제한)
   // 2025.10.15 대책: 시가 구간별 차등. 15억↓ 6억 / 15억 초과~25억 4억 / 25억 초과 2억.
@@ -1086,9 +1093,7 @@ const HOME_CONFIG = {
   LOAN_CAP_TABLE: [ { maxPrice: 1500000000, cap: 600000000 },   // 15억 이하 → 6억
                     { maxPrice: 2500000000, cap: 400000000 },   // 15억 초과~25억 → 4억
                     { maxPrice: Infinity,    cap: 200000000 } ], // 25억 초과 → 2억
-  MIN_DEPOSIT_TABLE: { SEOUL: 55000000, METRO: 48000000, METRO_CITY: 28000000, OTHER: 25000000 },
-
-  // ── 스트레스 DSR 3단계 (정밀) ──
+  REGION_IS_CAPITAL: { SEOUL:true, METRO:true, METRO_CITY:true, OTHER:false },
   DSR_LIMIT: 0.40,                       // 은행권 한도 40% (2금융권 0.50)
   CREDIT_DSR_TERM: 5,                    // 신용대출 DSR 산정 표준만기(년)
   CREDIT_STRESS_THRESHOLD: 100000000,    // 신용대출 잔액 1억 초과 시에만 스트레스 부과
@@ -1096,7 +1101,6 @@ const HOME_CONFIG = {
   STRESS_BASE: { MORTGAGE_CAPITAL: 0.030, MORTGAGE_LOCAL: 0.0075, CREDIT: 0.015, OTHER: 0.015 },
   // 유형별 적용비율: 변동 100%, 5년혼합 80%, 5년주기 40%, 순수고정 0%, 신용/기타 100%
   STRESS_RATIO: { mortgage_var:1.0, mortgage_mix:0.8, mortgage_periodic:0.4, mortgage_fixed:0.0, credit:1.0, other:1.0 },
-  REGION_IS_CAPITAL: { SEOUL:true, METRO:true, METRO_CITY:true, OTHER:false },
   // ※ 스트레스 금리는 DSR 산정에만 쓰이며 실제 대출금리/이자 계산에는 더하지 않는다.
 };
 
@@ -1108,7 +1112,8 @@ let home = {
   etcCost: { auto:true, mode:'pct', value:0 },
   extraCost: { mode:'fixed', value:0 },   // 추가 비용(인테리어·옵션·예비비 등) 사용자 자유입력
   loan: { auto:true, mode:'pct', value:0,
-          region:'SEOUL', regulated:true, status:'FIRST_HOME', roomCount:1,
+          region:'SEOUL', regulated:true, status:'NORMAL',
+          manualLtv: false, manualLtvMode: 'pct', manualLtvPct: 70, manualLtvFixed: 0,
           rate:4.5, term:30, dsrType:'mortgage_var' },
 };
 
@@ -1159,7 +1164,6 @@ const DEBT_COLORS  = ['#dc2626','#ea580c','#d97706','#be123c','#b91c1c','#c2410c
 function getUnit(){ return parseFloat(document.getElementById('unitSelect').value)||10000; }
 function getUnitLabel(){ const m={1:'unitWon',1000:'unitThousand',10000:'unitMan',100000:'unitTenMan',1000000:'unitMillion',100000000:'unitEok'}; return t(m[getUnit()]||'unitWon'); }
 function unitDescText(v){
-  if(lang==='en'){ return v===1?'input = actual KRW':('input × '+v.toLocaleString()+' = actual KRW'); }
   const d={1:'입력값 = 실제 금액(원)',1000:'입력값 × 1,000 = 실제 금액',10000:'입력값 × 10,000 = 실제 금액',100000:'입력값 × 100,000 = 실제 금액',1000000:'입력값 × 1,000,000 = 실제 금액',100000000:'입력값 × 100,000,000 = 실제 금액'}; return d[v]||'';
 }
 function onUnitChange(){ document.getElementById('unitDesc').textContent=unitDescText(getUnit()); renderAll(); update(); }
@@ -1191,23 +1195,22 @@ function getTotalYears(){ return getSteps(); }
 function realStartYear(){ return CUR_YEAR; }
 // 표시 라벨: 경과 기준. 연=현재(0)/"1년 후"…, 월=현재/"+N개월".
 function periodLabel(year){
-  const en=(lang==='en');
   if(gran==='month'){
     const y=Math.floor(year+1e-9), m=Math.round((year-y)*12)+1;
     const monthsElapsed=(y-CUR_YEAR)*12+(m-1);
-    if(monthsElapsed<=0) return en?'Now':'현재';
-    return en?`+${monthsElapsed} mo`:`${monthsElapsed}개월 후`;
+    if(monthsElapsed<=0) return '현재';
+    return `${monthsElapsed}개월 후`;
   }
   const yearsElapsed=year-CUR_YEAR;
-  if(yearsElapsed<=0) return en?'Now':'현재';
-  return en?`+${yearsElapsed} yr`:`${yearsElapsed}년 후`;
+  if(yearsElapsed<=0) return '현재';
+  return `${yearsElapsed}년 후`;
 }
 // 입력 변환: 화면은 경과연수(0,1,2…)로 입력받고 내부는 절대연도로 저장.
 function fieldToYear(val){ if(val===''||val===null||val===undefined)return null; const n=parseInt(val); if(isNaN(n))return null; return CUR_YEAR+Math.max(0,n); }
 function yearToField(year){ if(year===null||year===undefined||year==='')return ''; return Math.max(0, year-CUR_YEAR); }
 
 // 입력칸 단위 라벨: 경과 기준. 연='년 후', 월='개월 후'. (예: "시작 (년 후)")
-function periodUnitWord(){ const en=(lang==='en'); return (en?'(yr later)':'(년 후)'); }
+function periodUnitWord(){ return '(년 후)'; }
 // 시작/종료 연차 입력 변경 처리
 function onPeriodInput(){
   // 시작이 종료 이상이면 종료를 시작보다 크게 보정
@@ -1237,19 +1240,12 @@ function clampFlowStarts(){
 // ── Format ──
 function fmt(n){
   const abs=Math.abs(n), sign=n<0?'-':'';
-  if(lang==='en'){ return sign+'₩'+Math.round(abs).toLocaleString(); }   // 영어: ₩ + 천단위 콤마
   if(abs>=1e8){const e=Math.floor(abs/1e8),m=Math.floor((abs%1e8)/1e4);return sign+(m>0?`${e.toLocaleString()}억 ${m.toLocaleString()}만원`:`${e.toLocaleString()}억원`);}
   if(abs>=1e4)return sign+Math.floor(abs/1e4).toLocaleString()+'만원';
   return sign+'₩'+Math.round(abs).toLocaleString();
 }
 function fmtShort(n){
   const abs=Math.abs(n),sign=n<0?'-':'';
-  if(lang==='en'){ // 영어: B(십억)/M(백만)/K(천)
-    if(abs>=1e9)return sign+'₩'+(abs/1e9).toFixed(1)+'B';
-    if(abs>=1e6)return sign+'₩'+(abs/1e6).toFixed(1)+'M';
-    if(abs>=1e3)return sign+'₩'+Math.round(abs/1e3)+'K';
-    return sign+'₩'+Math.round(abs).toLocaleString();
-  }
   if(abs>=1e12)return sign+(abs/1e12).toFixed(1)+'조';
   if(abs>=1e8)return sign+(abs/1e8).toFixed(1)+'억';
   if(abs>=1e4)return sign+Math.round(abs/1e4)+'만';
@@ -1279,8 +1275,8 @@ const DEFAULT_DATA = {
   ],
   home:{ enabled:true, price:500000000, growthRate:2.5, standardPrice:0, areaOver85:false, firstTime:false,
     acqTax:{auto:true,mode:'pct',value:0}, etcCost:{auto:true,mode:'pct',value:0},
-    loan:{auto:true,mode:'pct',value:0,region:'SEOUL',regulated:true,status:'FIRST_HOME',
-          roomCount:1,rate:4.5,term:30,dsrType:'mortgage_var',applyLtv:true,applyCap:true,applyDsr:true} }
+    loan:{auto:true,mode:'pct',value:0,region:'SEOUL',regulated:true,status:'NORMAL',
+          manualLtv:false,manualLtvMode:'pct',manualLtvPct:70,manualLtvFixed:0,rate:4.5,term:30,dsrType:'mortgage_var',applyLtv:true,applyCap:true,applyDsr:true} }
 };
 
 // ════════════════════════ ASSET ITEMS ════════════════════════
@@ -1303,13 +1299,17 @@ function syncReallocAssets(){
 }
 function addAssetItem(data){
   // 정형화: 자산·부채 항목 최대 8개
-  if(!data && assetItems.length>=MAX_ITEMS){ showMsg(t('maxItemsMsg',{n:MAX_ITEMS})); return; }
-  const id=data?data.id:('a'+(idCnt++));
-  const item=data||{ id, name:t('newItem'), amount:0, type:'asset', assetClass:'cash', sellFeePct:0, disposalApply:true, start:realStartYear(), growth:{mode:'fixed',amount:0,rate:0,segments:defaultSegments()} };
+  const type = (data && data.type) ? data.type : 'asset';
+  const typeItems = assetItems.filter(i=>i.type===type);
+  if(!data.id && typeItems.length>=MAX_ITEMS){ showMsg(t('maxItemsMsg',{n:MAX_ITEMS})); return; }
+  const id=data.id?data.id:('a'+(idCnt++));
+  const item=data.id ? data : { id, name:t('newItem'), amount:0, type, assetClass:'cash', sellFeePct:0, disposalApply:true, start:realStartYear(), growth:{mode:'fixed',amount:0,rate:0,segments:defaultSegments()} };
   if(!item.growth)item.growth={mode:'fixed',amount:0,rate:0,segments:defaultSegments()};
   if(item.start===undefined)item.start=realStartYear();
   if(item.type==='asset' && !ASSET_CLASSES.includes(item.assetClass)) item.assetClass='cash';
-  assetItems.push(item); syncReallocAssets(); renderAssets(); renderRealloc(); update();
+  assetItems.push(item); syncReallocAssets(); renderAssets(); renderRealloc();
+  switchAssetTab(type==='debt' ? 'debt' : 'asset');
+  update();
 }
 function removeAssetItem(id){
   assetItems=assetItems.filter(i=>i.id!==id);
@@ -1418,7 +1418,10 @@ function setSegField(id,idx,field,val){ const it=getAsset(id); if(!it)return; co
   update(); }
 
 function renderAssets(){
-  const el=document.getElementById('assetList'); el.innerHTML='';
+  const assetEl=document.getElementById('assetList');
+  const debtEl=document.getElementById('debtList');
+  if(assetEl) assetEl.innerHTML='';
+  if(debtEl)  debtEl.innerHTML='';
   const label=getUnitLabel(), unit=getUnit(), periodWord=periodUnitWord();
   assetItems.forEach(it=>{
     it.start=realStartYear();   // 자산·부채는 항상 현재 보유분 → 시작=현재로 고정
@@ -1554,11 +1557,7 @@ function renderAssets(){
     const amountRow = `
       <div class="item-row"><div class="item-grid-label">${t('curHolding')} (${label})</div>
         <div class="input-wrap"><input type="number" value="${dispAmt}" min="0" step="1" oninput="setAssetField('${it.id}','amount',+this.value)"><span class="input-unit-tag">${label}</span></div></div>`;
-    const kindRow = `
-      <div class="item-row"><div class="item-grid-label">${t('category')}</div>
-        <select class="input" onchange="setItemKind('${it.id}',this.value)">
-          <option value="asset" ${curKind==='asset'?'selected':''}>🟢 ${t('asset')}</option>
-          <option value="debt" ${curKind==='debt'?'selected':''}>🔴 ${t('debt')}</option></select></div>`;
+    const kindRow = '';  // 탭으로 자산/부채 구분하므로 세부설정에서 제거
     const growthModeRow = `
       <div class="item-row"><div class="item-grid-label">${it.type==='debt'?t('rateModeForDebt'):t('growthMode')}</div>
         <select class="input" onchange="setAssetGrowthMode('${it.id}',this.value)">
@@ -1578,10 +1577,12 @@ function renderAssets(){
           <div><div class="item-grid-label">${t('curHolding')} (${label})</div>
             <div class="input-wrap"><input type="number" value="${dispAmt}" min="0" step="1" oninput="setAssetField('${it.id}','amount',+this.value)"><span class="input-unit-tag">${label}</span></div></div>
         </div>
+        ${it.type==='debt' && it.repay?.method ? `<div style="margin-top:4px;font-size:11px;color:var(--gray-500);"><span class="item-badge">${{bullet:t('bullet'),equal_principal:t('equalPrincipal'),equal_payment:t('equalPayment')}[it.repay.method]||''}</span></div>` : ''}
       </div>
       <button class="detail-toggle" onclick="toggleDetail('${it.id}')">${(isOpen?'− ':'+ ')+t('detailSettings')}</button>
       <div class="item-detail" style="display:${isOpen?'':'none'};">${detailInner}</div>`;
-    el.appendChild(div);
+    if(it.type==='asset'){ if(assetEl) assetEl.appendChild(div); }
+    else                 { if(debtEl)  debtEl.appendChild(div);  }
   });
   syncItemCaps();
 }
@@ -1596,7 +1597,9 @@ function addItem(type,data){
   const item=data||{ id, name:type==='income'?t('newIncome'):t('newExpense'), amount:500000, period:'month', rate:2, start:realStartYear(), end:null, flowClass:defClass, dsrIncome:(type==='income') };
   if(type==='income' && !INCOME_CLASSES.includes(item.flowClass)) item.flowClass='salary';
   if(type==='expense' && !EXPENSE_CLASSES.includes(item.flowClass)) item.flowClass='living';
-  (type==='income'?incomeItems:expenseItems).push(item); renderItems(); update();
+  (type==='income'?incomeItems:expenseItems).push(item); renderItems();
+  switchFlowTab(type==='expense' ? 'expense' : 'income');
+  update();
 }
 function removeItem(type,id){ if(type==='income')incomeItems=incomeItems.filter(i=>i.id!==id); else expenseItems=expenseItems.filter(i=>i.id!==id); renderItems(); update(); }
 // 수입/지출 필드 검증: amount=금액(원,음수방지), rate=증가율%(-50~100), start/end=시점(실제연도|null)
@@ -1624,14 +1627,22 @@ function setFlowClass(type, id, cls){
 }
 // 정형화: 각 섹션 항목 수 표시 + 8개 도달 시 추가 버튼 비활성화
 function syncItemCaps(){
-  const setCap=(countId,btnId,len)=>{
-    const c=document.getElementById(countId), b=document.getElementById(btnId);
-    if(c) c.textContent=`${len}/${MAX_ITEMS}`;
+  const assetOnly=assetItems.filter(i=>i.type==='asset');
+  const debtOnly =assetItems.filter(i=>i.type==='debt');
+  const setCap=(btnId,len)=>{
+    const b=document.getElementById(btnId);
     if(b){ const full=len>=MAX_ITEMS; b.disabled=full; b.style.opacity=full?'0.45':''; b.style.cursor=full?'not-allowed':''; b.title=full?t('maxItemsMsg',{n:MAX_ITEMS}):''; }
   };
-  setCap('assetCount','addAssetBtn',assetItems.length);
-  setCap('incomeCount','addIncomeBtn',incomeItems.length);
-  setCap('expenseCount','addExpenseBtn',expenseItems.length);
+  // 배지: 자산+부채 합산
+  const badge=document.getElementById('assetCount');
+  if(badge) badge.textContent=`${assetItems.length}/${MAX_ITEMS*2}`;
+  setCap('addAssetBtn', assetOnly.length);
+  setCap('addDebtBtn',  debtOnly.length);
+  // 수입+지출 합산 배지
+  const flowBadge=document.getElementById('flowCount');
+  if(flowBadge) flowBadge.textContent=`${incomeItems.length+expenseItems.length}/${MAX_ITEMS*2}`;
+  setCap('addIncomeBtn', incomeItems.length);
+  setCap('addExpenseBtn', expenseItems.length);
 }
 function renderList(elId,items,type){
   const el=document.getElementById(elId); el.innerHTML='';
@@ -2010,49 +2021,29 @@ function update(){
 function updateScanNote(reachInfo){}
 // 경과연수(소수 가능)를 "N년 후/N개월 후/현재" 표기로
 function periodLabelFromYears(yrs){
-  const en=(lang==='en');
-  if(yrs<=0) return en?'now':'현재';
-  if(yrs<1){ const m=Math.round(yrs*12); return en?`+${m} mo`:`${m}개월 후`; }
+  if(yrs<=0) return '현재';
+  if(yrs<1){ const m=Math.round(yrs*12); return `${m}개월 후`; }
   const r = Number.isInteger(yrs)?yrs:Math.round(yrs*10)/10;
-  return en?`+${r} yr`:`${r}년 후`;
+  return `${r}년 후`;
 }
 
 function updateSummary(rows){
   if(!rows.length)return;
-  // 🏠 구입 가능 시점: 핵심 배너 + 구매시점 집값 카드 + 필요자기자본 카드 (computeHome 기반)
   const hero=document.getElementById('heroResult'), hw=document.getElementById('hero-when'), hs=document.getElementById('hero-sub');
-  const gv=document.getElementById('s-home-reach'), gs=document.getElementById('s-home-reach-sub');
-  const bp=document.getElementById('s-buy-price'), bps=document.getElementById('s-buy-price-sub');
-  const card=document.getElementById('homeReachCard'), bcard=document.getElementById('buyPriceCard');
   if(!home.enabled){
     if(hero)hero.style.display='none';
-    if(card)card.style.display='none';
-    if(bcard)bcard.style.display='none';
   } else {
     if(hero)hero.style.display='';
-    if(card)card.style.display='';
-    if(bcard)bcard.style.display='';
     const h=computeHome(rows);
     if(h&&h.reachIdx>=0){
       const o=h.out[h.reachIdx];
       if(hero)hero.className='hero-result reach';
       if(hw)hw.textContent=t('heroReach',{p:periodLabel(o.year)});
-      if(hs)hs.textContent=t('heroReachSub',{v:fmt(o.needEquity)});
-      if(gv){ gv.textContent=fmt(o.needEquity); gv.className='summary-card-value val-green'; gv.style.color=''; }
-      if(gs)gs.textContent=periodLabel(o.year);
-      if(bp){ bp.textContent=fmt(o.price); bp.className='summary-card-value val-blue'; }
-      if(bps)bps.textContent=periodLabel(o.year);
+      if(hs)hs.textContent='구매 시점 집값 '+fmt(o.price)+'  ·  필요 자기자본 '+fmt(o.needEquity);
     } else {
       if(hero)hero.className='hero-result never';
       if(hw)hw.textContent=t('heroNever');
       if(hs)hs.textContent=t('heroNeverSub');
-      const lastOut = h&&h.out.length?h.out[h.out.length-1]:null;
-      const lastNeed = lastOut?lastOut.needEquity:0;
-      if(gv){ gv.textContent=h?fmt(lastNeed):'—'; gv.className='summary-card-value val-orange'; gv.style.color=''; }
-      if(gs)gs.textContent=t('homeNeverReach');
-      // 구매 불가 시: 마지막 시점 예상 집값을 표시(참고용)
-      if(bp){ bp.textContent=lastOut?fmt(lastOut.price):'—'; bp.className='summary-card-value val-blue'; }
-      if(bps)bps.textContent=lastOut?periodLabel(lastOut.year):t('homeNeverReach');
     }
   }
 }
@@ -2224,15 +2215,19 @@ function ltvPriorSum(){
   assetItems.forEach(it=>{ if(it.type==='debt' && it.ltvPrior) s+=Math.abs(safeNum(it.amount,0)); });
   return s;
 }
-// LTV 순수 한도: 집값×LTV − 방공제 − 선순위. 정책상한(cap)은 포함하지 않음(autoLoanDetail에서 별도 처리).
+// LTV 순수 한도. 정책상한(cap)은 포함하지 않음(autoLoanDetail에서 별도 처리).
 function calcLtvLimit(price){
   const L=home.loan;
-  const key=L.regulated?'REG':'NON';
-  const ltv=(HOME_CONFIG.LTV_MATRIX[key][L.status]??0);
-  const collateral=price*ltv;
-  const minDep=HOME_CONFIG.MIN_DEPOSIT_TABLE[L.region]??0;
-  const deduction=minDep*Math.max(0,Math.round(safeNum(L.roomCount,0)))+ltvPriorSum();
-  return Math.max(0, collateral-deduction);
+  if (L.manualLtv) {
+    const mode = L.manualLtvMode || 'pct';
+    const raw = mode === 'pct'
+      ? price * (safeNum(L.manualLtvPct, 0) / 100)
+      : nonNeg(L.manualLtvFixed ?? 0);
+    return Math.max(0, raw - ltvPriorSum());
+  }
+  const key = L.regulated ? 'REG' : (isCapitalRegion() ? 'NON_CAPITAL' : 'NON_LOCAL');
+  const ltv = (HOME_CONFIG.LTV_MATRIX[key][L.status] ?? 0);
+  return Math.max(0, price * ltv - ltvPriorSum());
 }
 // DSR 한도: (DSR소득×40% − 기존부채 연원리금) 여력으로 신규대출 원금 역산.
 function calcDsrLimit(dsrIncomeAnnual){
@@ -2254,6 +2249,11 @@ function dsrIncomeForYear(year){
 // 체크된 한도의 min. 모두 해제면 0. 각 한도를 반환해 🧮 박스에서 미적용 표시 가능.
 function autoLoanDetail(price, year){
   const L=home.loan;
+  // 직접 입력 모드: 다른 한도 무시하고 직접 지정값 반환
+  if(L.manualLtv){
+    const loan = calcLtvLimit(price);
+    return { ltv:loan, cap:null, dsr:null, applyLtv:true, applyCap:false, applyDsr:false, loan:Math.max(0,loan) };
+  }
   const applyLtv = L.applyLtv!==false;    // 기본 true
   const applyCap = L.applyCap!==false;    // 기본 true (정책상한 627)
   const applyDsr = L.applyDsr!==false;    // 기본 true
@@ -2424,7 +2424,14 @@ function syncHomeAutoReadout(){
       +`<span class="sub">LTV ${fmtShort(d.ltv)} · DSR ${fmtShort(d.dsr)} → ${t('homeApplyMin')} ${fmtShort(d.loan)}</span>`); }
 }
 // 산출 표 토글(클릭/탭). 데스크톱·모바일 공통.
-function toggleCalc(id){ const el=document.getElementById(id); if(!el)return; el.style.display=(el.style.display==='none'||!el.style.display)?'block':'none'; }
+function toggleCalc(id){
+  const el=document.getElementById(id); if(!el)return;
+  const open=(el.style.display==='none'||!el.style.display);
+  el.style.display=open?'block':'none';
+  // 같은 onclick을 가진 버튼의 첫 글자(+/−) 토글
+  const btn=document.querySelector(`button[onclick="toggleCalc('${id}')"]`);
+  if(btn){ const span=btn.querySelector('span'); if(span) btn.childNodes[0].textContent=open?'− ':'+ '; }
+}
 
 // 두 시점(현재 t=0 / 구입가능)을 받아 단계별 산출 표 3종을 채운다.
 function renderCalcTables(h){
@@ -2493,9 +2500,9 @@ function renderCalcTables(h){
   const L=home.loan;
   const applyLtv=L.applyLtv!==false, applyCap=L.applyCap!==false, applyDsr=L.applyDsr!==false;
   const na=t('calcNotApplied');
-  const ltvParts=(o)=>{ const key=L.regulated?'REG':'NON'; const ltvPct=HOME_CONFIG.LTV_MATRIX[key][L.status]??0;
-    const coll=o.price*ltvPct; const minDep=HOME_CONFIG.MIN_DEPOSIT_TABLE[L.region]??0; const roomDed=minDep*Math.max(0,Math.round(safeNum(L.roomCount,0))); const prior=ltvPriorSum();
-    return {ltvPct,coll,roomDed,prior,ltv:calcLtvLimit(o.price)}; };
+  const ltvParts=(o)=>{ const key=L.regulated?'REG':(isCapitalRegion()?'NON_CAPITAL':'NON_LOCAL'); const ltvPct=HOME_CONFIG.LTV_MATRIX[key][L.status]??0;
+    const coll=o.price*ltvPct; const prior=ltvPriorSum();
+    return {ltvPct,coll,prior,ltv:calcLtvLimit(o.price)}; };
   const capParts=(o)=>{ const c=capForPrice(o.price,L.regulated); return {cap:c}; };
   const dsrParts=(o,yr)=>{ const income=dsrIncomeForYear(yr); const cap40=income*HOME_CONFIG.DSR_LIMIT; const existing=dsrExistingDebtPayment(); const capacity=Math.max(0,cap40-existing); return {income,cap40,existing,capacity,dsr:calcDsrLimit(income)}; };
   const ln=ltvParts(now), lb=ltvParts(buy);
@@ -2507,7 +2514,6 @@ function renderCalcTables(h){
     +`<tr class="calc-group"><td colspan="3">${t('calcLtvBlock')} ${applyLtv?'✅':'🔲'}</td></tr>`
     +(applyLtv
       ? `<tr><td>${t('calcCollateral')} (×${(ln.ltvPct*100).toFixed(0)}%)</td><td>${fmt(ln.coll)}</td><td>${fmt(lb.coll)}</td></tr>`
-       +`<tr class="calc-sub"><td>− ${t('calcRoomDed')}</td><td>${fmt(ln.roomDed)}</td><td>${fmt(lb.roomDed)}</td></tr>`
        +`<tr class="calc-sub"><td>− ${t('calcPriorAuto')}</td><td>${fmt(ln.prior)}</td><td>${fmt(lb.prior)}</td></tr>`
        +`<tr><td>= ${t('calcLtvLimit')}</td><td>${fmt(ln.ltv)}</td><td>${fmt(lb.ltv)}</td></tr>`
       : `<tr class="calc-sub"><td colspan="3">${na}</td></tr>`)
@@ -2659,12 +2665,54 @@ function setHomeMode(which,mode){ home[which].mode=mode; syncHomeInputs(); updat
 function setHomeManualVal(which,val){ home[which].value=(home[which].mode==='pct')?safeNum(val,0):toRaw(nonNeg(val)); update(); }
 function setHomeExtraMode(mode){ home.extraCost.mode=mode; syncHomeInputs(); update(); }
 function setHomeExtraVal(val){ home.extraCost.value=(home.extraCost.mode==='pct')?safeNum(val,0):toRaw(nonNeg(val)); update(); }
+function setLoanMode(mode) {
+  home.loan.manualLtv = (mode === 'manual');
+  const autoPanel   = document.getElementById('loanAutoPanel');
+  const manualPanel = document.getElementById('loanManualPanel');
+  const autoOpts    = document.getElementById('homeLoanAutoOpts');
+  if (autoPanel)   autoPanel.style.display   = (mode === 'manual') ? 'none' : '';
+  if (manualPanel) manualPanel.style.display = (mode === 'manual') ? '' : 'none';
+  if (autoOpts)    autoOpts.style.display    = (mode === 'manual') ? 'none' : '';
+  syncHomeLtvManualUI();
+  update();
+}
+// 하위호환: 기존 체크박스 onchange에서 호출될 수 있으므로 래퍼 유지
+function setHomeLtvManual(checked){ setLoanMode(checked ? 'manual' : 'auto'); }
+function setHomeLtvManualMode(mode){
+  home.loan.manualLtvMode = mode;
+  syncHomeLtvManualUI();
+  update();
+}
+function setHomeLtvManualVal(val){
+  const mode = home.loan.manualLtvMode || 'pct';
+  if(mode === 'pct') home.loan.manualLtvPct = safeNum(val, 0);
+  else home.loan.manualLtvFixed = toRaw(nonNeg(val));
+  update();
+}
+function syncHomeLtvManualUI(){
+  const mode = home.loan.manualLtvMode || 'pct';
+  const unitTag = getUnitLabel();
+  document.querySelectorAll('#homeLtvManualModeSeg .seg-btn').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+  const valEl = document.getElementById('homeLtvVal');
+  const unitEl = document.getElementById('homeLtvValUnit');
+  if(valEl){
+    if(mode === 'pct') valEl.value = home.loan.manualLtvPct ?? 70;
+    else valEl.value = home.loan.manualLtvFixed ? home.loan.manualLtvFixed / getUnit() : '';
+    valEl.step = mode === 'pct' ? '0.1' : '1';
+    valEl.max = mode === 'pct' ? '100' : '';
+  }
+  if(unitEl) unitEl.textContent = mode === 'pct' ? '%' : unitTag;
+}
 function setHomeLoanOpt(field,val){
   if(field==='regulated') home.loan.regulated=!!val;
+  else if(field==='region'){
+    home.loan.region=val;
+    home.loan.regulated = (val === 'SEOUL');
+  }
   else if(field==='applyLtv') home.loan.applyLtv=!!val;
   else if(field==='applyCap') home.loan.applyCap=!!val;
   else if(field==='applyDsr') home.loan.applyDsr=!!val;
-  else if(field==='roomCount') home.loan.roomCount=Math.max(0,Math.round(safeNum(val,0)));
+  else if(field==='manualLtvPct') home.loan.manualLtvPct=safeNum(val,70);
   else if(field==='rate') home.loan.rate=safeNum(val,0);
   else if(field==='term') home.loan.term=Math.max(1,Math.round(safeNum(val,30)));
   else if(field==='status'){
@@ -2706,14 +2754,20 @@ function syncHomeInputs(){
   // 생애최초 체크박스가 기준: firstTime=true면 loan.status=FIRST_HOME으로 동기화
   if(home.firstTime && home.loan.status!=='FIRST_HOME') home.loan.status='FIRST_HOME';
   if(!home.firstTime && home.loan.status==='FIRST_HOME') home.loan.status='NORMAL';
-  // 차주 조건 셀렉트: FIRST_HOME은 체크박스로 처리하므로 셀렉트엔 NORMAL/MULTI_HOUSE만 표시
-  // FIRST_HOME인 경우 셀렉트에서 선택 가능한 값 없으므로 NORMAL로 표시(내부 상태는 FIRST_HOME 유지)
-  const statusForSelect = home.loan.status==='FIRST_HOME' ? 'NORMAL' : home.loan.status;
-  setV('homeRegion', home.loan.region); setV('homeStatus', statusForSelect);
-  setV('homeRooms', home.loan.roomCount);
+  setV('homeRegion', home.loan.region); setV('homeStatus', home.loan.status);
   setV('homeLoanRate', home.loan.rate); setV('homeLoanTerm', home.loan.term);
   setV('homeLoanType', home.loan.dsrType);
-  const regChk=document.getElementById('homeRegulated'); if(regChk)regChk.checked=!!home.loan.regulated;
+  // 대출 계산 방식 select 동기화
+  const loanModeSel = document.getElementById('loanModeSelect');
+  if (loanModeSel) loanModeSel.value = home.loan.manualLtv ? 'manual' : 'auto';
+  const isManual = !!home.loan.manualLtv;
+  const autoPanel   = document.getElementById('loanAutoPanel');
+  const manualPanel = document.getElementById('loanManualPanel');
+  const autoOpts    = document.getElementById('homeLoanAutoOpts');
+  if (autoPanel)   autoPanel.style.display   = isManual ? 'none' : '';
+  if (manualPanel) manualPanel.style.display = isManual ? '' : 'none';
+  if (autoOpts)    autoOpts.style.display    = isManual ? 'none' : '';
+  syncHomeLtvManualUI();
   // 적용 체크박스 3개
   const ltvChk=document.getElementById('loanApplyLtv'); if(ltvChk)ltvChk.checked=home.loan.applyLtv!==false;
   const capChk=document.getElementById('loanApplyCap'); if(capChk)capChk.checked=home.loan.applyCap!==false;
@@ -2743,7 +2797,7 @@ document.addEventListener('mousemove',e=>{if(tooltipEl.classList.contains('visib
 
 // ── Save / Load / Reset ──
 function getState(){
-  return { basis, gran, lang, startVal:getStartVal(), years:getSteps(), periodStart:getStartPeriod(), unit:getUnit(),
+  return { basis, gran, startVal:getStartVal(), years:getSteps(), periodStart:getStartPeriod(), unit:getUnit(),
     assets:JSON.parse(JSON.stringify(assetItems)),
     income:JSON.parse(JSON.stringify(incomeItems)),
     expense:JSON.parse(JSON.stringify(expenseItems)),
@@ -2756,8 +2810,6 @@ function applyState(s){
   ['assets','income','expense','realloc'].forEach(k=>{ if(!Array.isArray(s[k])) s[k]=[]; });
   basis='year';   // 항상 경과 기준(연도/나이 개념 제거)
   gran='year';    // 항상 연 단위 고정(월 단위 제거)
-  lang=s.lang||lang||'ko';
-  document.querySelectorAll('#langSeg .seg-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   const thpEl=document.getElementById('th-period'); if(thpEl) thpEl.textContent=t('tablePeriodElapsed');
   const svEl=document.getElementById('startVal'); if(svEl) svEl.value=CUR_YEAR;
   // 시작/종료 기간 입력 제거됨 → 시작=0(현재부터), 종료=100(구매 가능 시점 자동 탐색)로 고정.
@@ -2814,7 +2866,7 @@ function applyState(s){
   // 내집마련 복원(하위호환: home 없으면 기본값)
   const defHome={ enabled:true, price:500000000, growthRate:2.5, standardPrice:0, areaOver85:false, firstTime:false,
     acqTax:{auto:true,mode:'pct',value:0}, etcCost:{auto:true,mode:'pct',value:0}, extraCost:{mode:'fixed',value:0},
-    loan:{auto:true,mode:'pct',value:0,region:'SEOUL',regulated:true,status:'FIRST_HOME',roomCount:1,rate:4.5,term:30,dsrType:'mortgage_var',applyLtv:true,applyCap:true,applyDsr:true} };
+    loan:{auto:true,mode:'pct',value:0,region:'SEOUL',regulated:true,status:'NORMAL',manualLtv:false,manualLtvMode:'pct',manualLtvPct:70,manualLtvFixed:0,rate:4.5,term:30,dsrType:'mortgage_var',applyLtv:true,applyCap:true,applyDsr:true} };
   if(s.home){
     home=Object.assign({}, defHome, s.home);
     home.acqTax=Object.assign({}, defHome.acqTax, s.home.acqTax||{});
@@ -2833,7 +2885,7 @@ function applyState(s){
     if(typeof home.loan.applyDsr!=='boolean') home.loan.applyDsr=true;
     home.loan.auto=true; // 직접입력 제거됨 — 항상 자동
   } else { home=JSON.parse(JSON.stringify(defHome)); }
-  syncReallocAssets(); renderAll(); update();
+  syncReallocAssets(); renderAll(); switchAssetTab('asset'); switchFlowTab('income'); update();
 }
 function saveData(){ localStorage.setItem('homebuy_sim_v1',JSON.stringify(getState())); showMsg(t('msgSaved')); }
 function loadData(){
@@ -2845,7 +2897,7 @@ function loadData(){
   try{ applyState(parsed); showMsg(t('msgLoaded')); }
   catch(e){ showMsg(t('msgNoData')); }
 }
-function resetData(){ if(!confirm(t('confirmReset')))return; applyState(JSON.parse(JSON.stringify(DEFAULT_DATA))); }
+
 
 // ════════════════════════ 엑셀 내보내기 ════════════════════════
 // 시트 구성: ①조건요약 ②자산·부채 ③수입 ④지출 ⑤재투자전략 ⑥연도별결과(항목별 수입/지출/순현금흐름/자산별 잔액)
@@ -2856,12 +2908,6 @@ function exportExcel(){
   const pl=y=>periodLabel(y);                            // 연/나이 라벨
   const growthDesc=g=>{
     if(!g)return '-';
-    if(lang==='en'){
-      if(g.mode==='fixed')return `Fixed +${won(g.amount).toLocaleString()}/yr`;
-      if(g.mode==='rate')return `Rate ${g.rate}%/yr`;
-      if(g.mode==='custom')return 'Custom: '+g.segments.map(s=>{ const end=(s.end==null)?'after':pl(s.end); const val=s.method==='amount'?`+${won(s.value).toLocaleString()}`:`${s.value}%`; return `[~${end}: ${val}]`; }).join(' ');
-      return '-';
-    }
     if(g.mode==='fixed')return `정액 +${won(g.amount).toLocaleString()}원/년`;
     if(g.mode==='rate')return `정률 ${g.rate}%/년`;
     if(g.mode==='custom')return '사용자입력(구간별): '+g.segments.map((s,i)=>{
@@ -2874,10 +2920,10 @@ function exportExcel(){
 
   // ── 시트1: 조건 및 결과 ──
   const rows=compute();
-  const simPeriodTxt=gran==='month'?(lang==='en'?`${getSteps()} mo (${(getSteps()/12).toFixed(getSteps()%12?1:0)} yr)`:`${getSteps()}개월 (${(getSteps()/12).toFixed(getSteps()%12?1:0)}년)`):(lang==='en'?`${getSteps()} yr`:getSteps()+'년');
+  const simPeriodTxt=gran==='month'?`${getSteps()}개월 (${(getSteps()/12).toFixed(getSteps()%12?1:0)}년)`:getSteps()+'년';
   const s1=[
     [t('xlReportTitle')],
-    [t('xlGenTime'), new Date().toLocaleString(lang==='en'?'en-US':'ko-KR')],
+    [t('xlGenTime'), new Date().toLocaleString('ko-KR')],
     [],
     [t('xlSimUnit'), gran==='month'?t('granMonth'):t('granYear')],
     [t('xlSimPeriod'), simPeriodTxt],
@@ -2967,7 +3013,7 @@ function exportExcel(){
     // 오래된 날짜 기록은 정리(최근 날짜 1개만 유지)
     localStorage.setItem(key, JSON.stringify({[dateStr]:seq}));
   }catch(e){ seq=1; }
-  const fname=(lang==='en'?`HomePurchase_${dateStr}_${seq}.xlsx`:`내집마련_시뮬레이션_${dateStr}_${seq}.xlsx`);
+  const fname=`내집마련_시뮬레이션_${dateStr}_${seq}.xlsx`;
   try{ XLSX.writeFile(wb, fname); showMsg(t('msgExcel')); }
   catch(e){ showMsg(t('msgExcelFail')); }
 }
@@ -2993,7 +3039,7 @@ function reorderResults(){
   //   → ② 순자산 vs 필요자기자본 차트 → ③ 시점별 집값 차트
   //   → ④ 필요금액 표(숨김) → ⑤ 현금흐름 차트 → ⑥ 누적 순자산 → ⑦ 상세 현금흐름(숨김)
   // ※ homeCard(예상집값~대출가능액)는 좌측 패널에 있어서 여기서 제외.
-  const order=['heroResult','summaryGrid','homeChartCard','homeCostChartCard','homeTableCard','flowChartCard','assetChartCard','detailTableCard'];
+  const order=['heroResult','homeChartCard','homeCostChartCard','homeTableCard','flowChartCard','assetChartCard','detailTableCard'];
   order.forEach(id=>{ const el=document.getElementById(id); if(el)rp.appendChild(el); });
 }
 
@@ -3027,7 +3073,7 @@ function markOnboarded(){ try{ localStorage.setItem(ONBOARD_KEY,'1'); }catch(e){
 
 // 빠른 팝업 입력칸 단위 라벨 동기화 + 현재 상태값 프리필
 let quickStep=1;
-const QUICK_STEPS=3;
+const QUICK_STEPS=4;
 // 빠른 입력 임시 상태(여러 항목). 계산하기 누르면 실제 state로 반영.
 let qAssets=[], qDebts=[], qIncomes=[], qExpenses=[];
 
@@ -3199,7 +3245,17 @@ function quickCalc(){
   const pv=num((document.getElementById('qPrice')||{}).value); if(pv!=null) home.price=nonNeg(pv*u);
   const gv=num((document.getElementById('qGrowth')||{}).value); if(gv!=null) home.growthRate=gv;
   const ftEl=document.getElementById('qFirstTime'); if(ftEl) home.firstTime=!!ftEl.checked;
-  // ② 자산 — 입력된 행(금액 유효)만 새 assetItems로 구성
+  // ② 대출 조건 (STEP 2)
+  const qRegion = document.getElementById('qRegion')?.value || 'SEOUL';
+  const qStatus = document.getElementById('qStatus')?.value || 'NORMAL';
+  home.loan.region   = qRegion;
+  home.loan.regulated = (qRegion === 'SEOUL');
+  home.loan.status   = qStatus;
+  home.loan.rate     = safeNum(document.getElementById('qLoanRate')?.value, 4.5);
+  home.loan.term     = safeNum(document.getElementById('qLoanTerm')?.value, 30);
+  home.loan.dsrType  = document.getElementById('qLoanType')?.value || 'mortgage_var';
+  const qRepayMethodVal = document.getElementById('qRepayMethod')?.value || 'equal_payment';
+  // ③ 자산 — 입력된 행(금액 유효)만 새 assetItems로 구성
   const newAssets=[];
   qAssets.forEach(a=>{ const amt=num(a.amount); if(amt==null||amt<0) return;
     const it={ id:'a'+(idCnt++), type:'asset', assetClass:ASSET_CLASSES.includes(a.cls)?a.cls:'cash',
