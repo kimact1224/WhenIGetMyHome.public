@@ -15,6 +15,9 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="내집마련 시점 계산기 — 언제 집을 살 수 있을까">
 <meta property="og:description" content="지금부터 몇 년 후에 집을 살 수 있을까? 취득세·기타비용·대출(LTV·DSR)을 반영해 주택 구입 가능 시점을 한눈에.">
+<meta property="og:image" content="https://[내 GitHub 계정].github.io/[저장소 이름]/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="내집마련 시점 계산기">
 
@@ -22,12 +25,48 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="내집마련 시점 계산기 — 언제 집을 살 수 있을까">
 <meta name="twitter:description" content="취득세·기타비용·대출(LTV·DSR)을 반영해 주택 구입 가능 시점을 계산. 무료.">
+<meta name="twitter:image" content="https://[내 GitHub 계정].github.io/[저장소 이름]/og-image.png">
 
 <!-- 브라우저 탭 아이콘(이모지 파비콘) -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
 <!-- 외부 CDN 스크립트. crossorigin 추가(에러 가시성·SRI 호환).
      보안 강화를 원하면 아래에 integrity="sha384-..." 속성을 추가하세요.
      (정확한 해시는 https://cdnjs.com 각 파일 페이지의 'Copy SRI'에서 확인) -->
+<!-- 구조화 데이터: 구글 리치 결과 노출용 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "내집마련 시점 계산기",
+  "alternateName": "주택 구입 가능 시점 시뮬레이터",
+  "description": "지금부터 몇 년 후에 집을 살 수 있을까? 집값 상승률·취득세·기타비용·대출 가능액(LTV·스트레스 DSR)을 반영해, 시점별 필요 자기자본과 내 순자산을 비교하고 주택 구입 가능 시점을 알려주는 무료 도구입니다.",
+  "applicationCategory": "FinanceApplication",
+  "applicationSubCategory": "부동산 계산기",
+  "operatingSystem": "Web Browser",
+  "browserRequirements": "HTML5 지원 브라우저",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "KRW"
+  },
+  "featureList": [
+    "주택 구입 가능 시점 자동 계산",
+    "LTV·스트레스 DSR 반영 대출 한도 계산",
+    "취득세 자동 산출 (2025.6.27 대책 반영)",
+    "기간별 순자산 vs 필요 자기자본 시각화",
+    "자산·부채·수입·지출 항목별 시뮬레이션",
+    "엑셀 다운로드",
+    "결과 URL 공유"
+  ],
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "무주택자, 내집마련 준비자, 부동산 투자자"
+  },
+  "inLanguage": "ko-KR",
+  "isAccessibleForFree": true,
+  "keywords": "내집마련, 주택 구입 가능 시점, 자기자본 계산, 취득세, LTV, DSR, 스트레스DSR, 주택담보대출"
+}
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
@@ -165,7 +204,7 @@
   .hero-result.never{background:linear-gradient(135deg,#ea580c,#c2410c);}
   .hero-label{font-size:12px;font-weight:600;opacity:0.92;margin-bottom:6px;}
   .hero-value{font-size:26px;font-weight:800;line-height:1.15;letter-spacing:-0.5px;}
-  .hero-sub{font-size:12px;opacity:0.92;margin-top:6px;}
+  .hero-sub{font-size:12px;opacity:0.92;margin-top:6px;line-height:1.8;}
   .hero-info{font-size:12px;opacity:0.88;margin-top:5px;}
   .val-green{color:var(--green);}.val-red{color:var(--red);}.val-orange{color:var(--orange);}.val-blue{color:var(--blue);}
 
@@ -2061,13 +2100,34 @@ function updateSummary(rows){
     if(h&&h.reachIdx>=0){
       const o=h.out[h.reachIdx];
       if(hero)hero.className='hero-result reach';
-      if(hw)hw.textContent=t('heroReach',{p:periodLabel(o.year)});
-      if(hs)hs.textContent='구매 시점 집값 '+fmt(o.price)+'  ·  필요 자기자본 '+fmt(o.needEquity);
+
+      // 큰 텍스트: "160개월 후 6억 9,495만원으로 구입 가능"
+      if(hw)hw.innerHTML=`${periodLabel(o.year)}&nbsp;<span style="font-size:0.82em;font-weight:700;opacity:0.9">${fmt(o.price)}</span><span style="font-size:0.52em;font-weight:600;opacity:0.72">으로 구입 가능</span>`;
+
+      // 취득세+기타비용 합산
+      const totalFee = (o.acqTax||0) + (o.etc||0) + (o.extra||0);
+      // 월이자 계산 (대출금 × 연금리 ÷ 12)
+      const annualRate = safeNum(home.loan.rate, 0) / 100;
+      const term = Math.max(1, Math.round(safeNum(home.loan.term, 30)));
+      const monthlyInt = o.loan > 0 && annualRate > 0
+        ? Math.round(o.loan * annualRate / 12)
+        : 0;
+
+      if(hs){
+        hs.innerHTML =
+          `<span style="opacity:.85">취득세 등 필요비용 <b>${fmt(totalFee)}</b></span>`+
+          `<span style="margin:0 7px;opacity:.35">│</span>`+
+          `<span style="opacity:.85">대출 필요액 <b>${fmt(o.loan)}</b>`+
+            (term>0 ? `<span style="opacity:.7;font-weight:400"> (만기 ${term}년</span>` : '')+
+            (monthlyInt>0 ? `<span style="opacity:.7;font-weight:400">, 월이자 ${fmt(monthlyInt)})</span>` :
+              (term>0 ? `<span style="opacity:.7;font-weight:400">)</span>` : ''))+
+          `</span>`;
+      }
       if(shareBtn)shareBtn.style.display='';
     } else {
       if(hero)hero.className='hero-result never';
       if(hw)hw.textContent=t('heroNever');
-      if(hs)hs.textContent=t('heroNeverSub');
+      if(hs){ hs.textContent=''; hs.textContent=t('heroNeverSub'); }
       if(shareBtn)shareBtn.style.display='none';
     }
   }
